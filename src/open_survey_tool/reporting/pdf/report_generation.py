@@ -4,10 +4,12 @@ import pdfkit
 from django.core.files.temp import NamedTemporaryFile
 from django.template import loader
 
+from results.figures.base import Figure
 from results.figures.gapminder import Gapminder
 from results.figures.rating_distribution import RatingDistribution
 
 template = loader.get_template('reporting/pdf/report.html')
+cdf = Figure.pdf_config
 
 
 def generate_pdf_report():
@@ -18,8 +20,8 @@ def generate_pdf_report():
     """
     context = {
         'introduction': 'Quidem natus voluptatibus laboriosam quis aspernatur voluptatem optio provident.',
-        'gapminder': Gapminder.get_html(),
-        'rating_dist': RatingDistribution.get_html()
+        'gapminder': Gapminder.get_html(cdf),
+        'rating_dist': RatingDistribution.get_html(cdf)
     }
     rendered = template.render(context)
 

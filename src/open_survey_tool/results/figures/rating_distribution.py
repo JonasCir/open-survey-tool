@@ -8,7 +8,7 @@ from results.models import SurveyResult
 class RatingDistribution(Figure):
 
     @staticmethod
-    def get_html():
+    def get_html(cfg):
         # get all ratings from the DB
         df = pd.DataFrame.from_records(map(lambda x: x['result'], SurveyResult.objects.all().values()))
 
@@ -24,4 +24,4 @@ class RatingDistribution(Figure):
         fig.update_xaxes(type='category')
         fig.update_yaxes(tickformat=',d', automargin=False)
 
-        return fig.to_html(**Figure.html_config)
+        return fig.to_html(**cfg)

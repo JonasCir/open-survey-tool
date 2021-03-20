@@ -8,12 +8,14 @@ class Figure(ABC):
         },
         'full_html': False
     }
+    pdf_config = {
+        'config': {
+            'displayModeBar': False
+        },
+        'full_html': False
+    }
 
     @staticmethod
     @abstractmethod
-    def get_html():
-        """
-        :rtype: str
-        :return: exports the figure inside a div and hide config bar
-        """
+    def get_html(cfg):
         pass
