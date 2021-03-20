@@ -38,9 +38,27 @@
         survey
             .onComplete
             .add(function (result) {
+                const stringify = JSON.stringify(result.data);
                 document
                     .querySelector('#surveyResult')
-                    .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
+                    .textContent = "Result JSON:\n" + stringify;
+
+                $.ajax({
+                    type: "POST",
+                    url: "/results/",
+                    data: {
+                        csrfmiddlewaretoken: "{{ csrf_token }}",
+                        submission: stringify
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                    },
+                    error: function (error) {
+                        console.log("Something went wrong", error);
+                    }
+                });
+
             });
 
         survey.render("surveyElement");

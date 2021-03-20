@@ -15,6 +15,10 @@
             <li class="nav-item {% if request.get_full_path == survey %}active{% endif %}">
                 <a class="nav-link" href="{% url 'survey' %}">Survey</a>
             </li>
+            {% url 'results' as results %}
+            <li class="nav-item {% if request.get_full_path == results %}active{% endif %}">
+                <a class="nav-link" href="{% url 'results' %}">Results</a>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
