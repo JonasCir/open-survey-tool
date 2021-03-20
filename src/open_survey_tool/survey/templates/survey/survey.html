@@ -14,35 +14,24 @@
 
 {% block content %}
     <div id="surveyElement" style="display:inline-block;width:100%;"></div>
-    <div id="surveyResult"></div>
     <script type="text/javascript">
-
         Survey.StylesManager.applyTheme("modern");
 
         $.getJSON('/survey/content', function (content) {
+            // get survey description from server
             window.survey = new Survey.Model(content);
 
             survey
                 .onComplete
                 .add(function (result) {
-                    const stringify = JSON.stringify(result.data);
-                    document
-                        .querySelector('#surveyResult')
-                        .textContent = "Result JSON:\n" + stringify;
-
-                    const body = {
+                    $.post('/results/', {
                         csrfmiddlewaretoken: "{{ csrf_token }}",
-                        submission: stringify
-                    }
-                    $.post('/results/', body)
-
-
+                        submission: JSON.stringify(result.data)
+                    })
                 });
 
             survey.render("surveyElement");
         });
-
-
     </script>
 
 {% endblock content %}
