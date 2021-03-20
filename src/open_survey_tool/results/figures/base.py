@@ -4,13 +4,13 @@ from abc import ABC, abstractmethod
 class Figure(ABC):
     html_config = {
         'config': {
-            'displayModeBar': True
+            'displaylogo': False
         },
         'full_html': False
     }
     pdf_config = {
         'config': {
-            'displayModeBar': False
+            'displaylogo': False
         },
         'full_html': False
     }
