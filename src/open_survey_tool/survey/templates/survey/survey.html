@@ -17,51 +17,30 @@
     <div id="surveyResult"></div>
     <script type="text/javascript">
 
-        Survey
-            .StylesManager
-            .applyTheme("modern");
+        Survey.StylesManager.applyTheme("modern");
 
-        var json = {
-            questions: [
-                {
-                    type: "rating",
-                    name: "satisfaction",
-                    title: "How satisfied are you with the Product?",
-                    minRateDescription: "Not Satisfied",
-                    maxRateDescription: "Completely satisfied"
-                }
-            ]
-        };
+        $.getJSON('/survey/content', function (content) {
+            window.survey = new Survey.Model(content);
 
-        window.survey = new Survey.Model(json);
+            survey
+                .onComplete
+                .add(function (result) {
+                    const stringify = JSON.stringify(result.data);
+                    document
+                        .querySelector('#surveyResult')
+                        .textContent = "Result JSON:\n" + stringify;
 
-        survey
-            .onComplete
-            .add(function (result) {
-                const stringify = JSON.stringify(result.data);
-                document
-                    .querySelector('#surveyResult')
-                    .textContent = "Result JSON:\n" + stringify;
-
-                $.ajax({
-                    type: "POST",
-                    url: "/results/",
-                    data: {
+                    const body = {
                         csrfmiddlewaretoken: "{{ csrf_token }}",
                         submission: stringify
-                    },
-                    dataType: 'json',
-                    success: function (response) {
-                        console.log(response);
-                    },
-                    error: function (error) {
-                        console.log("Something went wrong", error);
                     }
+                    $.post('/results/', body)
+
+
                 });
 
-            });
-
-        survey.render("surveyElement");
+            survey.render("surveyElement");
+        });
 
 
     </script>
