@@ -1,2 +1,3 @@
 Dockerfile
 **/venv/
+open_survey_tool/db.sqlite3
