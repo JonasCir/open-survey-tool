@@ -2,6 +2,7 @@ FROM debian:buster-slim
 RUN apt update && apt upgrade -y --no-install-recommends
 RUN apt install -y \
     vim \
+    libpq-dev gcc \
     python3 python3-pip python3-setuptools python3-wheel python3-venv python3-dev\
     uwsgi-plugin-python3 \
     python3-pandas python3-pdfkit

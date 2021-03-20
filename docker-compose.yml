@@ -1,7 +1,20 @@
-version: '3.4'
+version: '3.9'
 services:
   survey:
     restart: unless-stopped
     build: src/
+    env_file:
+      - .env
     ports:
       - "8080:8080"
+  postgres:
+    restart: unless-stopped
+    image: postgres
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ${DOCKER_DATA}/psqldata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
