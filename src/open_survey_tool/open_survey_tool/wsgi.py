@@ -1,5 +1,5 @@
 """
-WSGI config for open_survey_tool project.
+WSGI config for sormas_stats project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -8,9 +8,12 @@ https://docs.djangoproject.com/en/3.1/howto/deployment/wsgi/
 """
 
 import os
+import sys
+from os.path import abspath, dirname
 
 from django.core.wsgi import get_wsgi_application
 
+sys.path.append(dirname(dirname(abspath(__file__))))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'open_survey_tool.settings')
 
 application = get_wsgi_application()
