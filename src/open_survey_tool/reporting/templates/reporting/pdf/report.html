@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Statistic Report</title>
+</head>
+<body>
+<h1>Statistic Report</h1>
+{{ introduction }}
+
+{# Marks the graph html as safe and turns off auto-escaping. This is safe b/c we use the html of the figure directly #}
+<h2>Cases per day</h2>
+{{ rating_dist|safe }}
+<h2>Example</h2>
+{{ gapminder|safe }}
+
+</body>
+</html>
