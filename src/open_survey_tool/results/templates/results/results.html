@@ -2,4 +2,8 @@
 
 {% block content %}
     <h1>Welcome to the Open Survey Tool result page!</h1>
+    <h2>Rating distribution</h2>
+    {{ rating_dist|safe }}
+    <h2>Example</h2>
+    {{ gapminder|safe }}
 {% endblock content %}
