@@ -9,6 +9,16 @@ class RatingDistribution(Figure):
 
     @staticmethod
     def get_html(cfg):
+        res = RatingDistribution.compute()
+        fig = px.bar(res, labels={'value': 'count'})
+
+        fig.update_xaxes(type='category')
+        fig.update_yaxes(tickformat=',d', automargin=False)
+
+        return fig.to_html(**cfg)
+
+    @staticmethod
+    def compute():
         # get all ratings from the DB
         df = pd.DataFrame.from_records(map(lambda x: x['result'], SurveyResult.objects.all().values()))
 
@@ -24,9 +34,4 @@ class RatingDistribution(Figure):
         # fill missing ratings
         res = res.reindex(list(range(1, 6)), fill_value=0)
 
-        fig = px.bar(res, labels={'value': 'count'})
-
-        fig.update_xaxes(type='category')
-        fig.update_yaxes(tickformat=',d', automargin=False)
-
-        return fig.to_html(**cfg)
+        return res

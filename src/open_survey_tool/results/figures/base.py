@@ -8,9 +8,10 @@ class Figure(ABC):
         },
         'full_html': False
     }
+
     pdf_config = {
         'config': {
-            'displaylogo': False
+            'displayModeBar': False
         },
         'full_html': False
     }
@@ -18,4 +19,8 @@ class Figure(ABC):
     @staticmethod
     @abstractmethod
     def get_html(cfg):
+        pass
+
+    @staticmethod
+    def compute():
         pass
