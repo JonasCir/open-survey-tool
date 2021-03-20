@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ask a user to rate a something by choosing a value - Rating question, Knockoutjs Survey Library
+        Example</title>
+    <meta name="viewport" content="width=device-width"/>
+    <script src="https://unpkg.com/knockout@3.5.1/build/output/knockout-latest.js"></script>
+    <script src="https://unpkg.com/survey-knockout@1.8.36/survey.ko.min.js"></script>
+    <link href="https://unpkg.com/survey-knockout@1.8.36/modern.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div id="surveyElement" style="display:inline-block;width:100%;"></div>
+<div id="surveyResult"></div>
+<script type="text/javascript">
+
+
+    Survey
+        .StylesManager
+        .applyTheme("modern");
+
+    var json = {
+        questions: [
+            {
+                type: "rating",
+                name: "satisfaction",
+                title: "How satisfied are you with the Product?",
+                minRateDescription: "Not Satisfied",
+                maxRateDescription: "Completely satisfied"
+            }
+        ]
+    };
+
+    window.survey = new Survey.Model(json);
+
+    survey
+        .onComplete
+        .add(function (result) {
+            document
+                .querySelector('#surveyResult')
+                .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
+        });
+
+    survey.render("surveyElement");
+
+
+</script>
+</body>
+</html>
