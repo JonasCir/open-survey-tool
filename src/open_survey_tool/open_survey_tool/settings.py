@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = secrets.token_hex(32)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.getenv('DJANGO_DEBUG', 'True'))
+DEBUG = True if os.getenv('DJANGO_DEBUG', 'True') == 'True' else False
 
 ALLOWED_HOSTS = []
 
