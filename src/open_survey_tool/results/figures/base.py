@@ -4,10 +4,11 @@ from abc import ABC, abstractmethod
 class Figure(ABC):
     html_config = {
         'config': {
-            'displayModeBar': True
+            'displaylogo': False
         },
         'full_html': False
     }
+
     pdf_config = {
         'config': {
             'displayModeBar': False
@@ -18,4 +19,8 @@ class Figure(ABC):
     @staticmethod
     @abstractmethod
     def get_html(cfg):
+        pass
+
+    @staticmethod
+    def compute():
         pass

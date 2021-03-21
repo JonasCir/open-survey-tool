@@ -8,47 +8,43 @@ from results.models import SurveyResult
 class RatingDistribution(Figure):
 
     @staticmethod
-    def get_html(cfg, mode=None):
+    def get_html(cfg, mode=None)):
+        res=RatingDistribution.compute(mode)
+        fig=px.bar(res, labels = {'value': 'Anzahl'})
+
+        fig.update_xaxes(type = 'category')
+        fig.update_yaxes(tickformat = ',d', automargin = False)
+
+        return fig.to_html(**cfg)
+
+    @ staticmethod
+    def compute(mode = None):
         # get all ratings from the DB
-        df = pd.DataFrame.from_records(
+        df=pd.DataFrame.from_records(
             map(lambda x: x['result'], SurveyResult.objects.all().values()))
 
         # group ratings by counts
         res = df[mode or 'satisfaction'].value_counts().rename(
             'Personen').to_frame()
-        res.index.rename('Bewertung', inplace=True)
+        res.index.rename('Bewertung', inplace = True)
 
         # fill missing ratings
         if mode == "question1-1":
-            res = res.reindex(["item1", "item2", "item3",
-                               "item4"], fill_value=0)
+            res=res.reindex(["item1", "item2", "item3",
+                               "item4"], fill_value = 0)
         else:
-            res = res.reindex(["item1", "item2", "item3",
-                               "item4", "item5"], fill_value=0)
-        print("MODE", mode)
+            res=res.reindex(["item1", "item2", "item3",
+                               "item4", "item5"], fill_value = 0)
 
-        resrename = None
         if mode == "question1-1":
-            resrename = res.rename({"item1": "Anzeigenerstatter:in", "item2": "Beschuldigte(r)", "item3": "Zeug(e):in",
-                                    "item4": "Geschädigte(r)"}, axis='index')
-            print("resrename1")
+            res=res.rename({"item1": "Anzeigenerstatter:in", "item2": "Beschuldigte(r)", "item3": "Zeug(e):in",
+                                    "item4": "Geschädigte(r)"}, axis = 'index')
 
         elif mode == "question1-2":
-            resrename = res.rename({"item1": "Straßenverkehr allgemein", "item2": "Internetkriminalität", "item3": "Körperverletzungsdelikt",
-                                    "item4": "Eigentumsdelikt", "item5": "Delikt gegen die sexuelle Selbstbestimmung"}, axis='index')
-            print("resrename2")
+            res=res.rename({"item1": "Straßenverkehr allgemein", "item2": "Internetkriminalität", "item3": "Körperverletzungsdelikt",
+                                    "item4": "Eigentumsdelikt", "item5": "Delikt gegen die sexuelle Selbstbestimmung"}, axis = 'index')
         else:
-            resrename = res.rename({"item1": "Trifft voll zu", "item2": "Trifft zu", "item3": "Trifft weniger zu",
-                                    "item4": "Trifft gar nicht zu", "item5": "Keine Angabe"}, axis='index')
-            print("resrename3")
+            res=res.rename({"item1": "Trifft voll zu", "item2": "Trifft zu", "item3": "Trifft weniger zu",
+                                    "item4": "Trifft gar nicht zu", "item5": "Keine Angabe"}, axis = 'index')
 
-        res = resrename
-
-        print("RES3", res)
-
-        fig = px.bar(res, labels={'value': 'Anzahl'})
-
-        fig.update_xaxes(type='category')
-        fig.update_yaxes(tickformat=',d', automargin=False)
-
-        return fig.to_html(**cfg)
+        return res
