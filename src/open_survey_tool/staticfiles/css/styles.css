@@ -1,12 +1,20 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+.banner {
+  background-color: #007bc2;
+  height: 20em;
+  color: white;
+}
 img {
   height: 3em;
 }
 .navbar {
   background-color: #003c64;
   font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .navbar ul {
   width: 100%;
@@ -23,6 +31,7 @@ img {
 }
 .results h1 {
   font-size: 1.5em;
+  margin-top: 3em;
 }
 .results h2 {
   font-size: 1.25em;
@@ -35,11 +44,88 @@ img {
 .sv-root-modern .sv-footer__complete-btn {
   background-color: #003c64 !important;
 }
+
+.banner {
+  background-color: #007bc2;
+  height: 20em;
+  color: white;
+}
+
+.banner .container {
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+  padding-bottom: 2em;
+  justify-content: space-between;
+}
+
+.banner .container > div {
+  height: 10em;
+  margin-left: 2em;
+}
+
+.banner img {
+  height: 10em;
+}
+
+.banner .button {
+  color: #003c64;
+  background-color: white;
+  padding: 0.5em 1em;
+  margin-bottom: 2em;
+}
+.surveygrid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin-top: 4em;
+}
+
+.surveygrid .leftgrid h2 {
+  font-size: 1.5em;
+}
+
+.surveygrid .leftgrid hr {
+  margin: 2em 4em 2em 0em;
+}
+
+.surveygrid .leftgrid h3 {
+  font-size: 1em;
+}
+
+.surveygrid .rightgrid {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 42em);
+}
+.surveygrid .rightgrid h2 {
+  font-size: 1em;
+}
+.othersurveys {
+  display: grid;
+  text-align: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2em;
+}
+.othersurveys > div {
+  padding-top: 1em;
+  background-color: #f1f1f1;
+}
+.othersurveys h3 {
+  font-size: 1em;
+  font-weight: normal;
+  margin-top: 1em;
+}
+.othersurveys img {
+  height: 8em;
+}
 footer {
   margin-top: 5em;
 }
 footer ul {
   display: flex;
+  border-top: 1px solid #bfbfbf;
+  padding: 2.5em 0em;
 }
 footer ul > div {
   width: 100%;

@@ -18,7 +18,6 @@ class Results(TemplateView):
     template_name = "results/results.html"
 
     def get_context_data(self, **kwargs):
-        print("CDF", cdf)
         return {
             'rating_1_1': RatingDistribution.get_html(cfg, "question1-1"),
             'rating_1_2': RatingDistribution.get_html(cfg, "question1-2"),
