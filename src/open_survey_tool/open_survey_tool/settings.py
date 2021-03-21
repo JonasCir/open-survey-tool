@@ -78,12 +78,9 @@ WSGI_APPLICATION = 'open_survey_tool.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'NAME': os.getenv('DB_NAME', 'open_survey'),
-        'USER': os.getenv('DB_USER', 'open_survey_user'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'password')
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 # Password validation
