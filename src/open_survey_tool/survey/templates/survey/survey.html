@@ -1,38 +1,39 @@
 {% extends "open_survey_tool/default.html" %}
-
 {% block head %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/survey-jquery/1.8.36/survey.jquery.min.js"
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/survey-jquery/1.8.36/survey.jquery.min.js"
             integrity="sha512-kwgVF6SQW1TFaWG2YISAnhrAZR7zm7s72w+SIIVHlrTibvzGEoZoZr179cxIcrdL3BvbT6FYAv62CmGCmN+Zsg=="
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://unpkg.com/survey-knockout@1.8.36/modern.css"
-          integrity="sha384-9ra4D8aAj6d7bADiQpmX1vrinmP9Fub8prrYixMBFHjUK/HN/Bh9+RVlBoL4+9If"
-          crossorigin="anonymous">
-    <title>
-        Ask a user to rate a something
-    </title>
+            crossorigin="anonymous"
+    ></script>
+    <link
+            rel="stylesheet"
+            href="https://unpkg.com/survey-knockout@1.8.36/modern.css"
+            integrity="sha384-9ra4D8aAj6d7bADiQpmX1vrinmP9Fub8prrYixMBFHjUK/HN/Bh9+RVlBoL4+9If"
+            crossorigin="anonymous"
+    />
+    <title>Ask a user to rate a something</title>
 {% endblock head %}
 
 {% block content %}
-    <div id="surveyElement" style="display:inline-block;width:100%;"></div>
+    <div id="surveyElement" style="display: inline-block; width: 100%"></div>
     <script type="text/javascript">
         Survey.StylesManager.applyTheme("modern");
 
-        $.getJSON('/survey/content', function (content) {
+        $.getJSON("/survey/content", function (content) {
             // get survey description from server
+            console.log(content);
             window.survey = new Survey.Model(content);
 
-            survey
-                .onComplete
-                .add(function (result) {
-                    $.post('/results/', {
-                        csrfmiddlewaretoken: "{{ csrf_token }}",
-                        submission: JSON.stringify(result.data)
-                    })
+            survey.onComplete.add(function (result) {
+                $.post("/results/", {
+                    csrfmiddlewaretoken: "{{ csrf_token }}",
+                    submission: JSON.stringify(result.data)
                 });
-
+            });
+            survey.locale = "de";
+            survey.completedHtml = "<b>Vielen Dank für ihre Teilnahme</b>";
             survey.render("surveyElement");
         });
     </script>
 
 {% endblock content %}
-

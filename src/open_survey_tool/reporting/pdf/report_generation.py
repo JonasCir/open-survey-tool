@@ -9,7 +9,7 @@ from results.figures.gapminder import Gapminder
 from results.figures.rating_distribution import RatingDistribution
 
 template = loader.get_template('reporting/pdf/report.html')
-cdf = Figure.pdf_config
+cfg = Figure.pdf_config
 
 
 def generate_pdf_report():
@@ -20,8 +20,17 @@ def generate_pdf_report():
     """
     context = {
         'introduction': 'Quidem natus voluptatibus laboriosam quis aspernatur voluptatem optio provident.',
-        'gapminder': Gapminder.get_html(cdf),
-        'rating_dist': RatingDistribution.get_html(cdf)
+        'rating_1_1': RatingDistribution.get_html(cfg, "question1-1"),
+        'rating_1_2': RatingDistribution.get_html(cfg, "question1-2"),
+        'rating_2_1': RatingDistribution.get_html(cfg, "question2-1"),
+        'rating_2_2': RatingDistribution.get_html(cfg, "question2-2"),
+        'rating_3_1': RatingDistribution.get_html(cfg, "question3-1"),
+        'rating_3_2': RatingDistribution.get_html(cfg, "question3-2"),
+        'rating_4_1': RatingDistribution.get_html(cfg, "question4-1"),
+        'rating_4_2': RatingDistribution.get_html(cfg, "question4-2"),
+        'rating_5_1': RatingDistribution.get_html(cfg, "question5-1"),
+        'rating_5_2': RatingDistribution.get_html(cfg, "question5-2"),
+        'gapminder': Gapminder.get_html(cfg)
     }
     rendered = template.render(context)
 
