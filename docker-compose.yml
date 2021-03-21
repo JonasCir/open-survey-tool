@@ -7,16 +7,4 @@ services:
       - .env
     ports:
       - "8080:8080"
-    depends_on: [ postgres ]
 
-  postgres:
-    restart: unless-stopped
-    image: postgres
-    environment:
-      - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-    volumes:
-      - ${DOCKER_DATA}/psqldata:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
