@@ -8,9 +8,9 @@ from results.models import SurveyResult
 class RatingDistribution(Figure):
 
     @staticmethod
-    def get_html(cfg):
-        res = RatingDistribution.compute()
-        fig = px.bar(res, labels={'value': 'count'})
+    def get_html(cfg, mode=None):
+        res = RatingDistribution.compute(mode)
+        fig = px.bar(res, labels={'value': 'Anzahl'})
 
         fig.update_xaxes(type='category')
         fig.update_yaxes(tickformat=',d', automargin=False)
@@ -18,20 +18,34 @@ class RatingDistribution(Figure):
         return fig.to_html(**cfg)
 
     @staticmethod
-    def compute():
+    def compute(mode=None):
         # get all ratings from the DB
-        df = pd.DataFrame.from_records(map(lambda x: x['result'], SurveyResult.objects.all().values()))
+        df = pd.DataFrame.from_records(
+            map(lambda x: x['result'], SurveyResult.objects.all().values()))
 
         # group ratings by counts
-        if df.empty is False:
-            res = df['satisfaction'].value_counts().rename('count').to_frame()
-        else:
-            res = pd.DataFrame(data={'count': [0, 0, 0, 0, 0]})
-
-        # rename the index column
-        res.index.rename('rating', inplace=True)
+        res = df[mode or 'satisfaction'].value_counts().rename('Personen').to_frame()
+        res.index.rename('Bewertung', inplace=True)
 
         # fill missing ratings
-        res = res.reindex(list(range(1, 6)), fill_value=0)
+        if mode == "question1-1":
+            res = res.reindex(["item1", "item2", "item3",
+                               "item4"], fill_value=0)
+        else:
+            res = res.reindex(["item1", "item2", "item3",
+                               "item4", "item5"], fill_value=0)
+
+        if mode == "question1-1":
+            res = res.rename({"item1": "Anzeigenerstatter:in", "item2": "Beschuldigte(r)", "item3": "Zeug(e):in",
+                              "item4": "Geschädigte(r)"}, axis='index')
+
+        elif mode == "question1-2":
+            res = res.rename({"item1": "Straßenverkehr allgemein", "item2": "Internetkriminalität",
+                              "item3": "Körperverletzungsdelikt",
+                              "item4": "Eigentumsdelikt", "item5": "Delikt gegen die sexuelle Selbstbestimmung"},
+                             axis='index')
+        else:
+            res = res.rename({"item1": "Trifft voll zu", "item2": "Trifft zu", "item3": "Trifft weniger zu",
+                              "item4": "Trifft gar nicht zu", "item5": "Keine Angabe"}, axis='index')
 
         return res
