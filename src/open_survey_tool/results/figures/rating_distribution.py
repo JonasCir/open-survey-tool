@@ -28,6 +28,7 @@ class RatingDistribution(Figure):
             res = df[mode or 'satisfaction'].value_counts().rename('Personen').to_frame()
             res.index.rename('Bewertung', inplace=True)
         else:
+            # we have a completely empty DB
             zeros = [0, 0, 0, 0] if mode == "question1-1" else [0, 0, 0, 0, 0]
             res = pd.DataFrame(data={'Bewertung': zeros})
 
