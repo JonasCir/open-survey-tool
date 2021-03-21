@@ -12,25 +12,27 @@
 />
 <title>Ask a user to rate a something</title>
 {% endblock head %} {% block content %}
-<div id="surveyElement" style="display: inline-block; width: 100%"></div>
-<script type="text/javascript">
-  Survey.StylesManager.applyTheme("modern");
+<div class="container">
+  <div id="surveyElement" style="display: inline-block; width: 100%"></div>
+  <script type="text/javascript">
+    Survey.StylesManager.applyTheme("modern");
 
-  $.getJSON("/survey/content", function (content) {
-    // get survey description from server
-    console.log(content);
-    window.survey = new Survey.Model(content);
+    $.getJSON("/survey/content", function (content) {
+      // get survey description from server
+      console.log(content);
+      window.survey = new Survey.Model(content);
 
-    survey.onComplete.add(function (result) {
-      $.post("/results/", {
-        csrfmiddlewaretoken: "{{ csrf_token }}",
-        submission: JSON.stringify(result.data)
+      survey.onComplete.add(function (result) {
+        $.post("/results/", {
+          csrfmiddlewaretoken: "{{ csrf_token }}",
+          submission: JSON.stringify(result.data)
+        });
       });
+      survey.locale = "de";
+      survey.completedHtml = "<b>Vielen Dank für ihre Teilnahme</b>";
+      survey.render("surveyElement");
     });
-    survey.locale = "de";
-    survey.completedHtml = "<b>Vielen Dank für ihre Teilnahme</b>";
-    survey.render("surveyElement");
-  });
-</script>
+  </script>
+</div>
 
 {% endblock content %}
