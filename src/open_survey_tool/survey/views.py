@@ -1,11 +1,10 @@
-import logging
-
 from django.http import JsonResponse
 from django.views import View
 from django.views.generic import TemplateView
 
-# todo logger not working
-logger = logging.getLogger(__name__)
+from open_survey_tool.utils.logger import get_logger
+
+logger = get_logger()
 
 
 class Survey(TemplateView):
@@ -17,6 +16,8 @@ class Survey(TemplateView):
 
 class SurveyContent(View):
     def get(self, request):
+        logger.info('sending out survey')
+
         content = {
             'questions': [
                 {
