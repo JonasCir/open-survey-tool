@@ -24,8 +24,12 @@ class RatingDistribution(Figure):
             map(lambda x: x['result'], SurveyResult.objects.all().values()))
 
         # group ratings by counts
-        res = df[mode or 'satisfaction'].value_counts().rename('Personen').to_frame()
-        res.index.rename('Bewertung', inplace=True)
+        if df.empty is False:
+            res = df[mode or 'satisfaction'].value_counts().rename('Personen').to_frame()
+            res.index.rename('Bewertung', inplace=True)
+        else:
+            zeros = [0, 0, 0, 0] if mode == "question1-1" else [0, 0, 0, 0, 0]
+            res = pd.DataFrame(data={'Bewertung': zeros})
 
         # fill missing ratings
         if mode == "question1-1":
