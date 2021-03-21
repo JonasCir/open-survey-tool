@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'open_survey_tool.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': os.getenv('DB_HOST', 'localhost'),
         'NAME': os.getenv('DB_NAME', 'open_survey'),
