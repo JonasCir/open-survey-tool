@@ -2,7 +2,9 @@
 <!-- prettier-ignore -->
 {% include "open_survey_tool/navbar.html" %}
 
-<div class="container pt-4">{% block content %} {% endblock %}</div>
+<div style="min-height: calc(100vh - 18em)">
+  {% block content %} {% endblock %}
+</div>
 <footer>
   <div class="container">
     <ul>

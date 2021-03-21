@@ -28,7 +28,8 @@ class RatingDistribution(Figure):
             # todo if there is exactly one entry in the DB and mode was not provided
             #  this blows up
 
-            res = df[mode or 'satisfaction'].value_counts().rename('Personen').to_frame()
+            res = df[mode or 'satisfaction'].value_counts().rename(
+                'Personen').to_frame()
             res.index.rename('Bewertung', inplace=True)
         else:
             # we have a completely empty DB
