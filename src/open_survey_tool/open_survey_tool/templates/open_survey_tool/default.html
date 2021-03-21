@@ -1,11 +1,18 @@
-{% extends "open_survey_tool/base.html" %}
+{% extends "open_survey_tool/base.html" %} {% block body %}
+<!-- prettier-ignore -->
+{% include "open_survey_tool/navbar.html" %}
 
-{% block body %}
-    {% include "open_survey_tool/navbar.html" %}
-
-    <div class="container pt-4">
-        {% block content %}
-        {% endblock %}
-    </div>
+<div class="container pt-4">{% block content %} {% endblock %}</div>
+<footer>
+  <div class="container">
+    <ul>
+      <li><a>Impressum</a></li>
+      <li><a>Datenschutz</a></li>
+      <li><a>Kontakt</a></li>
+      <div></div>
+      <li>2021 | Sag's der Polizei</li>
+    </ul>
+  </div>
+</footer>
 
 {% endblock body %}
