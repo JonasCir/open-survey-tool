@@ -18,13 +18,16 @@ class RatingDistribution(Figure):
         return fig.to_html(**cfg)
 
     @staticmethod
-    def compute(mode=None):
+    def compute(mode):
         # get all ratings from the DB
         df = pd.DataFrame.from_records(
             map(lambda x: x['result'], SurveyResult.objects.all().values()))
 
         # group ratings by counts
         if df.empty is False:
+            # todo if there is exactly one entry in the DB and mode was not provided
+            #  this blows up
+
             res = df[mode or 'satisfaction'].value_counts().rename('Personen').to_frame()
             res.index.rename('Bewertung', inplace=True)
         else:
