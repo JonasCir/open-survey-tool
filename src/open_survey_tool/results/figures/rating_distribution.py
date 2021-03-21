@@ -17,16 +17,24 @@ class RatingDistribution(Figure):
 
         return fig.to_html(**cfg)
 
-    @ staticmethod
-    def compute(mode=None):
+    @staticmethod
+    def compute(mode):
         # get all ratings from the DB
         df = pd.DataFrame.from_records(
             map(lambda x: x['result'], SurveyResult.objects.all().values()))
 
         # group ratings by counts
-        res = df[mode or 'satisfaction'].value_counts().rename(
-            'Personen').to_frame()
-        res.index.rename('Bewertung', inplace=True)
+        if df.empty is False:
+            # todo if there is exactly one entry in the DB and mode was not provided
+            #  this blows up
+
+            res = df[mode or 'satisfaction'].value_counts().rename(
+                'Personen').to_frame()
+            res.index.rename('Bewertung', inplace=True)
+        else:
+            # we have a completely empty DB
+            zeros = [0, 0, 0, 0] if mode == "question1-1" else [0, 0, 0, 0, 0]
+            res = pd.DataFrame(data={'Bewertung': zeros})
 
         # fill missing ratings
         if mode == "question1-1":
@@ -41,8 +49,10 @@ class RatingDistribution(Figure):
                               "item4": "Geschädigte(r)"}, axis='index')
 
         elif mode == "question1-2":
-            res = res.rename({"item1": "Straßenverkehr allgemein", "item2": "Internetkriminalität", "item3": "Körperverletzungsdelikt",
-                              "item4": "Eigentumsdelikt", "item5": "Delikt gegen die sexuelle Selbstbestimmung"}, axis='index')
+            res = res.rename({"item1": "Straßenverkehr allgemein", "item2": "Internetkriminalität",
+                              "item3": "Körperverletzungsdelikt",
+                              "item4": "Eigentumsdelikt", "item5": "Delikt gegen die sexuelle Selbstbestimmung"},
+                             axis='index')
         else:
             res = res.rename({"item1": "Trifft voll zu", "item2": "Trifft zu", "item3": "Trifft weniger zu",
                               "item4": "Trifft gar nicht zu", "item5": "Keine Angabe"}, axis='index')
