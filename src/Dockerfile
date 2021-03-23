@@ -2,10 +2,12 @@ FROM debian:buster-slim
 RUN apt update && apt upgrade -y --no-install-recommends
 RUN apt install -y \
     vim \
-    libpq-dev gcc \
+    sqlite3 \
     python3 python3-pip python3-setuptools python3-wheel python3-venv python3-dev\
     uwsgi-plugin-python3 \
     python3-pandas python3-pdfkit
+
+RUN useradd -s /bin/false -r survey_user
 
 WORKDIR /srv
 
@@ -22,4 +24,5 @@ RUN python3 -m venv src/python/venv && \
 # copy everything
 COPY . src/
 
+USER survey_user
 CMD [ "/srv/src/config/setup_and_run.sh" ]

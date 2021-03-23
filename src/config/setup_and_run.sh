@@ -8,4 +8,5 @@ python3 manage.py migrate
 echo "Migration successful"
 
 cd open_survey_tool/
+
 uwsgi --ini uwsgi.ini

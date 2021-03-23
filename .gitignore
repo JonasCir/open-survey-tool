@@ -5,3 +5,4 @@
 src/.vscode
 src/open_survey_tool/db.sqlite3
 docker-data/
+/src/open_survey_tool/db.sqlite3
