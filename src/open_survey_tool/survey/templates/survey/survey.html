@@ -29,7 +29,8 @@
         });
       });
       survey.locale = "de";
-      survey.completedHtml = "<b>Vielen Dank für ihre Teilnahme</b>";
+      survey.completedHtml =
+        "<div><b>Vielen Dank für ihre Teilnahme</b><br/><a href='/results/'>Wie sind die Ergebnisse bisher?</a></div>";
       survey.render("surveyElement");
     });
   </script>
