@@ -23,11 +23,11 @@ img {
   width: 100%;
 }
 .navbar a {
-  color: white;
+  color: white !important;
   font-size: 1em;
 }
 .navbar .nav-item.active a {
-  color: #ffcb05;
+  color: #ffcb05 !important;
 }
 .results h1 {
   font-size: 1.5em;
@@ -96,7 +96,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100vh - 42em);
+  min-height: calc(100vh - 42em);
 }
 .surveygrid .rightgrid h2 {
   font-size: 1em;
@@ -121,10 +121,17 @@ img {
 }
 footer {
   margin-top: 5em;
+  border-top: 1px solid #bfbfbf;
+}
+footer .footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
+}
+.credits {
+  justify-content: flex-end;
 }
 footer ul {
   display: flex;
-  border-top: 1px solid #bfbfbf;
   padding: 2.5em 0em;
 }
 footer ul > div {

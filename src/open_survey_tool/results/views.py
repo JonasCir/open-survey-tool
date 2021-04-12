@@ -33,6 +33,7 @@ class Results(TemplateView):
         }
 
     def post(self, request):
+        logger.info('getting in survey')
         submission = json.loads(request.POST.get('submission'))
         # todo does not check if all JSON keys are set
         result = SurveyResult.objects.create(result=submission)
