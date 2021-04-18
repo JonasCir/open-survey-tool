@@ -1,10 +1,9 @@
 import pandas as pd
 import plotly.express as px
 
-from internalresults.figures.base import Figure
-from results.models import SurveyResult
-
 from open_survey_tool.utils.logger import get_logger
+from results.models import SurveyResult
+from results.utils.figure import Figure
 
 logger = get_logger()
 
@@ -24,12 +23,14 @@ class GeneralBubble(Figure):
 
         dfta = dftaz.reset_index()
         dfta = dfta.replace({'question1-1': {"item1": "Anzeigenerstatter:in",
-                            "item2": "Beschuldigte(r)", "item3": "Zeug(e):in", "item4": "Geschädigte(r)"},
+                                             "item2": "Beschuldigte(r)", "item3": "Zeug(e):in",
+                                             "item4": "Geschädigte(r)"},
                              'question1-2': {"item1": "Straßenverkehr allgemein", "item2": "Internetkriminalität",
                                              "item3": "Körperverletzungsdelikt",
-                                             "item4": "Eigentumsdelikt", "item5": "Delikt gegen die sexuelle Selbstbestimmung"}})
+                                             "item4": "Eigentumsdelikt",
+                                             "item5": "Delikt gegen die sexuelle Selbstbestimmung"}})
         dfta = dfta.rename(columns={
-                           "question1-1": "Rolle", "question1-2": "Kontext", "Counting": "Teilnehmer"})
+            "question1-1": "Rolle", "question1-2": "Kontext", "Counting": "Teilnehmer"})
 
         fig = px.scatter(dfta, x="Rolle",
                          y="Kontext", size="Teilnehmer")
@@ -50,7 +51,7 @@ class GeneralBubble(Figure):
         )
         return fig.to_html(**cfg)
 
-    @ staticmethod
+    @staticmethod
     def compute(mode):
         # get all ratings from the DB
         dfa = pd.DataFrame.from_records(

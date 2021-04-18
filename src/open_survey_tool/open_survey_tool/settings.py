@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'survey.apps.SurveysConfig',
     'index.apps.IndexConfig',
     'results.apps.ResultsConfig',
-    'internalresults.apps.ResultsConfig',
     'reporting.apps.ReportingConfig'
 ]
 

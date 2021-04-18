@@ -1,68 +1,55 @@
 <nav class="navbar navbar-dark navbar-expand-md">
-  <div class="container">
-    <a class="navbar-brand" href="{% url 'index' %}"
-      >{% load static %}<img src={% static "img/Logo_SagsDerPolizeiDE.png" %}
-      height="200"/></a
-    >
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">{% load static %}<img
+                src={% static "img/Logo_SagsDerPolizeiDE.png" %}
+                        height="200"/></a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        {% url 'index' as index %}
-        <li
-          class="nav-item {% if request.get_full_path == index %}active{% endif %}"
-        >
-          <a class="nav-link" href="{% url 'index' %}">Start</a>
-        </li>
-        {% url 'survey' as survey %}
-        <li
-          class="nav-item {% if request.get_full_path == survey %}active{% endif %}"
-        >
-          <a class="nav-link" href="{% url 'survey' %}">Fragebogen</a>
-        </li>
-        <div></div>
-        {% url 'results' as results %}
-        <li
-          class="nav-item {% if request.get_full_path == results %}active{% endif %}"
-        >
-          <a class="nav-link" href="{% url 'results' %}">Ergebnisse</a>
-        </li>
-        {% url 'reporting' as reporting %}
-        <li
-          class="nav-item {% if request.get_full_path == reporting %}active{% endif %}"
-        >
-          <a class="nav-link" href="{% url 'reporting' %}">Reporting</a>
-        </li>
-        {% url 'internalresults' as internalresults %}
-        <li
-          class="nav-item {% if request.get_full_path == internalresults %}active{% endif %}"
-        >
-          <a class="nav-link" href="{% url 'internalresults' %}"
-            >Internalresults</a
-          >
-        </li>
-      </ul>
-      <!--<form class="form-inline my-2 my-lg-0">
-      <input
-        class="form-control mr-sm-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-        Search
-      </button>
-    </form>-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                {% url 'index' as index %}
+                <li class="nav-item {% if request.get_full_path == index %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'index' %}">Start</a>
+                </li>
+                {% url 'survey' as survey %}
+                <li class="nav-item {% if request.get_full_path == survey %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'survey' %}">Fragebogen</a>
+                </li>
+                <div></div>
+                {% url 'results' as public_results %}
+                <li class="nav-item {% if request.get_full_path == public_results %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'public_results' %}">Ergebnisse</a>
+                </li>
+                {% url 'reporting' as reporting %}
+                <li class="nav-item {% if request.get_full_path == reporting %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'reporting' %}">Reporting</a>
+                </li>
+                {% url 'results/internal' as internal_results %}
+                <li class="nav-item {% if request.get_full_path == internal_results %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'internal_results' %}">Internal Reseults</a>
+                </li>
+            </ul>
+            <!--<form class="form-inline my-2 my-lg-0">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>-->
+        </div>
     </div>
-  </div>
 </nav>

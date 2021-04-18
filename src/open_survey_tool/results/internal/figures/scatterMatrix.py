@@ -1,10 +1,9 @@
 import pandas as pd
 import plotly.express as px
 
-from internalresults.figures.base import Figure
-from results.models import SurveyResult
-
 from open_survey_tool.utils.logger import get_logger
+from results.models import SurveyResult
+from results.utils.figure import Figure
 
 logger = get_logger()
 
@@ -25,7 +24,7 @@ class ScatterMatrix(Figure):
 
         return fig.to_html(**cfg)
 
-    @ staticmethod
+    @staticmethod
     def compute(mode):
         # get all ratings from the DB
         dfax = pd.DataFrame.from_records(
@@ -56,7 +55,7 @@ class ScatterMatrix(Figure):
         dftax = dfta.set_index(["Rolle", "Kontext"])
         dfa["Rolle"] = dfax["Rolle"]
         dfa["Kontext"] = dfax["Kontext"]
-        #print(dfa, dftax, "index", dfa.index, dftax.index)
+        # print(dfa, dftax, "index", dfa.index, dftax.index)
         dfau = dfa.merge(dftax, left_on=[
             "Rolle", "Kontext"], right_index=True)
         # print(dfau)
@@ -65,11 +64,12 @@ class ScatterMatrix(Figure):
                                        "item2": "Beschuldigte(r)", "item3": "Zeug(e):in", "item4": "Geschädigte(r)"},
                              'Kontext': {"item1": "Straßenverkehr allgemein", "item2": "Internetkriminalität",
                                          "item3": "Körperverletzungsdelikt",
-                                         "item4": "Eigentumsdelikt", "item5": "Delikt gegen die sexuelle Selbstbestimmung"}})
+                                         "item4": "Eigentumsdelikt",
+                                         "item5": "Delikt gegen die sexuelle Selbstbestimmung"}})
 
         dfau["Rolle-Kontext"] = dfau["Rolle"] + " bei " + dfau["Kontext"]
         dfo = dfau[["Rolle-Kontext", "Verhalten",
-                   "Kompetenz", "Information", "Vertrauen"]]
+                    "Kompetenz", "Information", "Vertrauen"]]
         dfo = dfo.value_counts().rename('Anzahl').to_frame()
         df = dfo.reset_index()
         # print(df)

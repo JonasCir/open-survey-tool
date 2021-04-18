@@ -4,10 +4,14 @@ import logging
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 
-from results.figures.base import Figure
-from results.figures.gapminder import Gapminder
-from results.figures.rating_distribution import RatingDistribution
+from results.internal.figures.generalBoxChart import GeneralBoxChart
+from results.internal.figures.generalBubble import GeneralBubble
+from results.internal.figures.heatMap import HeatMap
+from results.internal.figures.pieChart import PieChart
+from results.internal.figures.scatterMatrix import ScatterMatrix
 from results.models import SurveyResult
+from results.utils.figure import Figure
+from results.utils.rating_distribution import RatingDistribution
 
 logger = logging.getLogger(__name__)
 
@@ -37,3 +41,20 @@ class Results(TemplateView):
         result = SurveyResult.objects.create(result=submission)
         result.save()
         return HttpResponse()
+
+
+class InternalResults(TemplateView):
+    template_name = "results/internalresults.html"
+
+    def get_context_data(self, **kwargs):
+        return {
+            'bubbles_users': GeneralBubble.get_html(cfg, "question1-1"),
+            'box_all': GeneralBoxChart.get_html(cfg),
+            'scatter_matrix': ScatterMatrix.get_html(cfg),
+            'pie_chart': PieChart.get_html(cfg),
+            'heat_map': HeatMap.get_html(cfg),
+            'box_verhalten': GeneralBoxChart.get_html(cfg, "Verhalten"),
+            'box_kompetenz': GeneralBoxChart.get_html(cfg, "Kompetenz"),
+            'box_information': GeneralBoxChart.get_html(cfg, "Information"),
+            'box_vertrauen': GeneralBoxChart.get_html(cfg, "Vertrauen")
+        }

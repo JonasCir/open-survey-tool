@@ -16,3 +16,4 @@ The project started at the UpdateDeutschland 48h-Sprint.
 1. `pip install -r src/requirements-dev.txt`
 1. `docker-compose up -d`
 1. In `src/open_survey_tool` run `python manage.py migrate`
+1. Run `docker-compose down --volumes` to clear the DB.

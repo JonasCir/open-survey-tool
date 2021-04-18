@@ -1,5 +1,5 @@
 FROM debian:buster-slim
-RUN apt update && apt upgrade -y --no-install-recommends
+RUN apt update && apt upgrade -y --no-install-recommends --fix-missing
 RUN apt install -y \
     vim \
     libpq-dev gcc \

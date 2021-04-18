@@ -1,10 +1,9 @@
 import pandas as pd
 import plotly.express as px
 
-from internalresults.figures.base import Figure
-from results.models import SurveyResult
-
 from open_survey_tool.utils.logger import get_logger
+from results.models import SurveyResult
+from results.utils.figure import Figure
 
 logger = get_logger()
 
@@ -20,10 +19,10 @@ class GeneralBoxChart(Figure):
             dfp = df[["Rolle", "Auftreten", "Kommunikation"]]
         elif mode == "Kompetenz":
             titletext = "Ergebnis Kompetenz (1=sehr zufrieden, 4=sehr unzufrieden)"
-            dfp = df[["Rolle",  "Auskunftsfähig", "Einordnen"]]
+            dfp = df[["Rolle", "Auskunftsfähig", "Einordnen"]]
         elif mode == "Information":
             titletext = "Ergebnis Information (1=sehr zufrieden, 4=sehr unzufrieden)"
-            dfp = df[["Rolle",  "Information Situation",
+            dfp = df[["Rolle", "Information Situation",
                       "Information weitere Maßnahmen"]]
         elif mode == "Vertrauen":
             titletext = "Ergebnis Vertrauen (1=sehr zufrieden, 4=sehr unzufrieden)"
@@ -54,7 +53,7 @@ class GeneralBoxChart(Figure):
 
         return fig.to_html(**cfg)
 
-    @ staticmethod
+    @staticmethod
     def compute(mode):
         # get all ratings from the DB
         dfax = pd.DataFrame.from_records(
@@ -88,7 +87,8 @@ class GeneralBoxChart(Figure):
                                    "item2": "Beschuldigte(r)", "item3": "Zeug(e):in", "item4": "Geschädigte(r)"},
                          'Kontext': {"item1": "Straßenverkehr allgemein", "item2": "Internetkriminalität",
                                      "item3": "Körperverletzungsdelikt",
-                                     "item4": "Eigentumsdelikt", "item5": "Delikt gegen die sexuelle Selbstbestimmung"}})
+                                     "item4": "Eigentumsdelikt",
+                                     "item5": "Delikt gegen die sexuelle Selbstbestimmung"}})
 
         df["Rolle-Kontext"] = df["Rolle"] + " bei " + df["Kontext"]
 
