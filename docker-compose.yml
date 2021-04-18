@@ -1,13 +1,13 @@
 version: '3.9'
 services:
-  #survey:
-  #  restart: unless-stopped
-  #  build: src/
-  #  env_file:
-  #    - .env
-  #  ports:
-  #    - "8080:8080"
-  #  depends_on: [ postgres ]
+  survey:
+    restart: unless-stopped
+    build: src/
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    depends_on: [ postgres ]
 
   postgres:
     restart: unless-stopped
