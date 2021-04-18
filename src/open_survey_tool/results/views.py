@@ -28,8 +28,7 @@ class Results(TemplateView):
             'rating_4_1': RatingDistribution.get_html(cfg, "question4-1"),
             'rating_4_2': RatingDistribution.get_html(cfg, "question4-2"),
             'rating_5_1': RatingDistribution.get_html(cfg, "question5-1"),
-            'rating_5_2': RatingDistribution.get_html(cfg, "question5-2"),
-            'gapminder': Gapminder.get_html(cfg)
+            'rating_5_2': RatingDistribution.get_html(cfg, "question5-2")
         }
 
     def post(self, request):

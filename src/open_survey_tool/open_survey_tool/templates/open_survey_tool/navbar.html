@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-dark navbar-expand-md">
   <div class="container">
     <a class="navbar-brand" href="{% url 'index' %}"
       >{% load static %}<img src={% static "img/Logo_SagsDerPolizeiDE.png" %}
@@ -42,6 +42,14 @@
           class="nav-item {% if request.get_full_path == reporting %}active{% endif %}"
         >
           <a class="nav-link" href="{% url 'reporting' %}">Reporting</a>
+        </li>
+        {% url 'internalresults' as internalresults %}
+        <li
+          class="nav-item {% if request.get_full_path == internalresults %}active{% endif %}"
+        >
+          <a class="nav-link" href="{% url 'internalresults' %}"
+            >Internalresults</a
+          >
         </li>
       </ul>
       <!--<form class="form-inline my-2 my-lg-0">

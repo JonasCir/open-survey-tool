@@ -26,7 +26,8 @@ SECRET_KEY = secrets.token_hex(32)
 DEBUG = True if os.getenv('DJANGO_DEBUG', 'True') == 'True' else False
 
 # SECURITY WARNING: this must match the domain
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',
+                 'sagsderpolizei.eu.pythonanywhere.com']
 
 # Application definition
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'survey.apps.SurveysConfig',
     'index.apps.IndexConfig',
     'results.apps.ResultsConfig',
+    'internalresults.apps.ResultsConfig',
     'reporting.apps.ReportingConfig'
 ]
 

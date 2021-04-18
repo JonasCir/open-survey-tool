@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.express as px
 
-from results.figures.base import Figure
+from internalresults.figures.base import Figure
 from results.models import SurveyResult
 
 from open_survey_tool.utils.logger import get_logger

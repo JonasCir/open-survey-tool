@@ -1,0 +1,26 @@
+{% extends "open_survey_tool/default.html" %} {% block content %}
+<div class="container">
+  <div class="results">
+    <h1>Ergebnisse des Fragebogens - Analyse</h1>
+    <h2>Allgemeine Informationen</h2>
+    {{ bubbles_users|safe }}
+    <br />
+    {{ pie_chart|safe }}
+    <br />
+    {{ box_all|safe }}
+    <br />
+    {{ scatter_matrix|safe }}
+    <br />
+    {{ heat_map|safe }}
+    <h2>Verhalten und Auftreten</h2>
+    {{ box_verhalten|safe }}
+    <h2>Kompetenz</h2>
+    {{ box_kompetenz|safe }}
+    <h2>Information</h2>
+    {{ box_information|safe }}
+    <h2>Vertrauen</h2>
+    {{ box_vertrauen|safe }}
+  </div>
+</div>
+
+{% endblock content %}

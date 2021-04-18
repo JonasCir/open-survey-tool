@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('survey/', include('survey.urls')),
     path('reporting', include('reporting.urls')),
-    path('results/', include('results.urls'))
+    path('results/', include('results.urls')),
+    path('internalresults/', include('internalresults.urls'))
 ]
