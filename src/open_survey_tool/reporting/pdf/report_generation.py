@@ -5,7 +5,7 @@ from django.core.files.temp import NamedTemporaryFile
 from django.template import loader
 
 from results.utils.figure import Figure
-from results.utils.rating_distribution import RatingDistribution
+from results.views import Results
 
 template = loader.get_template('reporting/pdf/report.html')
 cfg = Figure.pdf_config
@@ -17,19 +17,12 @@ def generate_pdf_report():
     :return: An in-memory byte buffer which holds the generated PDF.
     :rtype io.BytesIO
     """
+
     context = {
         'introduction': 'Quidem natus voluptatibus laboriosam quis aspernatur voluptatem optio provident.',
-        'rating_1_1': RatingDistribution.get_html(cfg, "question1-1"),
-        'rating_1_2': RatingDistribution.get_html(cfg, "question1-2"),
-        'rating_2_1': RatingDistribution.get_html(cfg, "question2-1"),
-        'rating_2_2': RatingDistribution.get_html(cfg, "question2-2"),
-        'rating_3_1': RatingDistribution.get_html(cfg, "question3-1"),
-        'rating_3_2': RatingDistribution.get_html(cfg, "question3-2"),
-        'rating_4_1': RatingDistribution.get_html(cfg, "question4-1"),
-        'rating_4_2': RatingDistribution.get_html(cfg, "question4-2"),
-        'rating_5_1': RatingDistribution.get_html(cfg, "question5-1"),
-        'rating_5_2': RatingDistribution.get_html(cfg, "question5-2"),
+        'results': Results.create_context_data()['results']
     }
+
     rendered = template.render(context)
 
     # FIXME(@JonasCir) use BytesIO directly instead of filesystem

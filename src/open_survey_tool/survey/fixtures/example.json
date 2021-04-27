@@ -4,7 +4,7 @@
     "pk": null,
     "fields": {
       "name": "First Survey",
-      "content_json": {
+      "definition_json": {
         "questions": [
           {
             "type": "html",
@@ -13,7 +13,7 @@
           },
           {
             "type": "radiogroup",
-            "name": "question1-1",
+            "name": "question1_1",
             "indent": 2,
             "title": "1.1: In welcher Rolle sind Sie der Polizei begegnet?",
             "hideNumber": "true",
@@ -40,7 +40,7 @@
           },
           {
             "type": "radiogroup",
-            "name": "question1-2",
+            "name": "question1_2",
             "indent": 2,
             "title": "1.2: In welchem Kontext hatten Sie mit der Polizei zu tun?",
             "hideNumber": "true",
@@ -76,7 +76,7 @@
           },
           {
             "type": "rating",
-            "name": "question2-1",
+            "name": "question2_1",
             "indent": 2,
             "title": "2.1: Das Auftreten der Polizeibeamten war professionell!",
             "hideNumber": "true",
@@ -105,7 +105,7 @@
           },
           {
             "type": "rating",
-            "name": "question2-2",
+            "name": "question2_2",
             "indent": 2,
             "title": "2.2: Die Kommunikation der Polizeibeamten war zu jederzeit angemessen!",
             "hideNumber": "true",
@@ -139,7 +139,7 @@
           },
           {
             "type": "rating",
-            "name": "question3-1",
+            "name": "question3_1",
             "indent": 2,
             "title": "3.1: Die Polizeibeamten waren zu Ihrem Anliegen jederzeit auskunftsfähig!",
             "hideNumber": "true",
@@ -168,7 +168,7 @@
           },
           {
             "type": "rating",
-            "name": "question3-2",
+            "name": "question3_2",
             "indent": 2,
             "title": "3.2: Die Polizeibeamten konnten Ihr Anliegen rechtlich einordnen!",
             "hideNumber": "true",
@@ -202,7 +202,7 @@
           },
           {
             "type": "rating",
-            "name": "question4-1",
+            "name": "question4_1",
             "indent": 2,
             "title": "4.1: Wurden Sie in der Situation ausreichend informiert?",
             "hideNumber": "true",
@@ -231,7 +231,7 @@
           },
           {
             "type": "rating",
-            "name": "question4-2",
+            "name": "question4_2",
             "indent": 2,
             "title": "4.2: Wurden Sie über die weiteren Maßnahmen ausreichend informiert?",
             "hideNumber": "true",
@@ -265,7 +265,7 @@
           },
           {
             "type": "rating",
-            "name": "question5-1",
+            "name": "question5_1",
             "indent": 2,
             "title": "5.1: Hatten Sie in Ihrem Anliegen Vertrauen in die Aufgabenwahrnehmung der Polizei?",
             "hideNumber": "true",
@@ -294,7 +294,7 @@
           },
           {
             "type": "rating",
-            "name": "question5-2",
+            "name": "question5_2",
             "indent": 2,
             "title": "5.2: Würden Sie sich auch künftig vertrauensvoll an die Polizei wenden?",
             "hideNumber": "true",
@@ -323,6 +323,14 @@
           }
         ]
       }
+    }
+  },
+  {
+    "model": "results.SurveyResults",
+    "pk": null,
+    "fields": {
+      "question": "question1-1",
+      "result": "gn_bbbl"
     }
   }
 ]

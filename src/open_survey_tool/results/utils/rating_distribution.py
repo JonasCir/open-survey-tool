@@ -2,8 +2,9 @@ import pandas as pd
 import plotly.express as px
 
 from open_survey_tool.utils.logger import get_logger
-from results.models import SurveyResult
+from results.models import SurveyResponses
 from results.utils.figure import Figure
+from survey.models import Surveys
 
 logger = get_logger()
 
@@ -11,8 +12,8 @@ logger = get_logger()
 class RatingDistribution(Figure):
 
     @staticmethod
-    def get_html(cfg, mode=None):
-        res = RatingDistribution.compute(mode)
+    def get_html(cfg, question=None):
+        res = RatingDistribution.compute(question)
         fig = px.bar(res, labels={'value': 'Anzahl'})
 
         fig.update_xaxes(type='category')
@@ -21,43 +22,28 @@ class RatingDistribution(Figure):
         return fig.to_html(**cfg)
 
     @staticmethod
-    def compute(mode):
-        # get all ratings from the DB
+    def compute(question):
+        # get all ratings from the DB for the given question
         df = pd.DataFrame.from_records(
-            map(lambda x: x['result'], SurveyResult.objects.all().values()))
+            SurveyResponses.objects.values_list(f'response__{question}')
+        )
+
+        # map the items to human readable description
+        question_items = Surveys.get_survey_items_for_question(question)
+        df.replace(question_items, inplace=True)
 
         # group ratings by counts
         if df.empty is False:
-            # todo if there is exactly one entry in the DB and mode was not provided
-            #  this blows up
-
-            res = df[mode or 'satisfaction'].value_counts().rename(
-                'Personen').to_frame()
-            res.index.rename('Bewertung', inplace=True)
+            # count the values
+            dist = df.value_counts().to_frame('distribution')
         else:
             # we have a completely empty DB
-            zeros = [0, 0, 0, 0] if mode == "question1-1" else [0, 0, 0, 0, 0]
-            res = pd.DataFrame(data={'Bewertung': zeros})
+            zeros = [0 for _ in question_items.values()]
+            dist = pd.DataFrame(data={'distribution': zeros})
+
+        dist = dist.reset_index().set_index(0)
 
         # fill missing ratings
-        if mode == "question1-1":
-            res = res.reindex(["item1", "item2", "item3",
-                               "item4"], fill_value=0)
-        else:
-            res = res.reindex(["item1", "item2", "item3",
-                               "item4", "item5"], fill_value=0)
-
-        if mode == "question1-1":
-            res = res.rename({"item1": "Anzeigenerstatter:in", "item2": "Beschuldigte(r)", "item3": "Zeug(e):in",
-                              "item4": "Geschädigte(r)"}, axis='index')
-
-        elif mode == "question1-2":
-            res = res.rename({"item1": "Straßenverkehr allgemein", "item2": "Internetkriminalität",
-                              "item3": "Körperverletzungsdelikt",
-                              "item4": "Eigentumsdelikt", "item5": "Delikt gegen die sexuelle Selbstbestimmung"},
-                             axis='index')
-        else:
-            res = res.rename({"item1": "Trifft voll zu", "item2": "Trifft zu", "item3": "Trifft weniger zu",
-                              "item4": "Trifft gar nicht zu", "item5": "Keine Angabe"}, axis='index')
+        res = dist.reindex(question_items.values(), fill_value=0)
 
         return res

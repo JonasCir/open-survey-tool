@@ -19,5 +19,5 @@ class SurveyContent(View):
     def get(self, request):
         logger.info('sending out survey')
 
-        content = Surveys.objects.filter(name="First Survey").first().content_json
+        content = Surveys.objects.filter(name="First Survey").first().definition_json
         return JsonResponse(content)

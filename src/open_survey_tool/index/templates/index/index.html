@@ -1,62 +1,60 @@
 {% extends "open_survey_tool/default.html" %} {% block content %}
-<div class="banner">
-  <div class="container">
-    {% load static %}<img src={% static "img/feedback.jpg" %} height="400"/>
-    <div>
-      <h1>Polizeipräsidium Heilbronn</h1>
-      <h2>Allgemeine Zufriedenheit</h2>
-    </div>
-    <a class="button" href="{% url 'survey' %}">Zum Fragebogen</a>
-  </div>
-</div>
-<div class="container surveygrid">
-  <div class="leftgrid">
-    <h2>Polizeipräsidium Heilbronn, Baden-Wüttemberg</h2>
-    <hr />
-    <h3>Veröffentlichkeitsdatum</h3>
-    <span>Freitag, den 19.03.2021</span>
-    <hr />
-    <h3>Ansprechpartnerin</h3>
-    <span>Frau Marie Muster,<br />Kriminalrätin</span>
-    <br /><br />
-    <span>Franzstraße 42,<br />74076 Heilbronn</span>
-  </div>
-  <div class="rightgrid">
-    <div>
-      <h3>Beschreibung</h3>
-      <p>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-        amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-        rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-        ipsum dolor sit amet.
-      </p>
-      <h3>Bearbeitungsdauer</h3>
-      <p>Circa 2 Minuten</p>
-    </div>
-    <div>
-      <h2>Weitere Umfragen</h2>
-      <div class="othersurveys">
-        <div>
-          <img src={% static "img/feedback.jpg" %} height="400"/>
-          <h3>Verkehrsschulung für Kindergartenkinder</h3>
+    <div class="banner">
+        <div class="container">
+            {% load static %}<img src={% static "img/feedback.jpg" %} height="400"/>
+            <div>
+                <h1>Polizeipräsidium Heilbronn</h1>
+                <h2>Allgemeine Zufriedenheit</h2>
+            </div>
+            <a class="button" href="{% url 'survey' %}">Zum Fragebogen</a>
         </div>
-        <!-- prettier ignore -->
-        <div>
-          <img src={% static "img/feedback.jpg" %} height="400"/>
-          <h3>Berufeinsteigermesse Abiturienten:innen</h3>
-        </div>
-        <!-- prettier ignore -->
-        <div>
-          <img src={% static "img/feedback.jpg" %} height="400"/>
-          <h3>Querdenker Demo 7.3.2021 Heilbronn</h3>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
+    <div class="container surveygrid">
+        <div class="leftgrid">
+            <h2>Polizeipräsidium Heilbronn, Baden-Wüttemberg</h2>
+            <hr/>
+            <h3>Veröffentlichkeitsdatum</h3>
+            <span>Freitag, den 19.03.2021</span>
+            <hr/>
+            <h3>Ansprechpartnerin</h3>
+            <span>Frau Marie Muster,<br/>Kriminalrätin</span>
+            <br/><br/>
+            <span>Franzstraße 42,<br/>74076 Heilbronn</span>
+        </div>
+        <div class="rightgrid">
+            <div>
+                <h3>Beschreibung</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                    eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                    voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                    clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+                    amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                    nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                    sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+                    rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+                    ipsum dolor sit amet.
+                </p>
+                <h3>Bearbeitungsdauer</h3>
+                <p>Circa 2 Minuten</p>
+            </div>
+            <div>
+                <h2>Weitere Umfragen</h2>
+                <div class="othersurveys">
+                    <div>
+                        <img src={% static "img/feedback.jpg" %} height="400"/>
+                        <h3>Verkehrsschulung für Kindergartenkinder</h3>
+                    </div>
+                    <div>
+                        <img src={% static "img/feedback.jpg" %} height="400"/>
+                        <h3>Berufeinsteigermesse Abiturienten:innen</h3>
+                    </div>
+                    <div>
+                        <img src={% static "img/feedback.jpg" %} height="400"/>
+                        <h3>Querdenker Demo 7.3.2021 Heilbronn</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
