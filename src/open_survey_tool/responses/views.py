@@ -23,7 +23,7 @@ class SurveyResponse(TemplateView):
     """
     This page shows all responses to the survey to the user.
     """
-    template_name = "results/survey_result.html"
+    template_name = "responses/survey_result.html"
 
     @staticmethod
     def create_context_data():
@@ -55,7 +55,7 @@ class ResponseDetail(RetrieveUpdateDestroyAPIView):
 
 
 class InternalResults(TemplateView):
-    template_name = 'results/internalresults.html'
+    template_name = 'responses/internalresults.html'
 
     def get_context_data(self, **kwargs):
         return {
