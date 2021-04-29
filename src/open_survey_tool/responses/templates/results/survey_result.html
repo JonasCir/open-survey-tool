@@ -1,0 +1,11 @@
+{% extends "open_survey_tool/default.html" %} {% block content %}
+    <div class="container">
+        <div class="results">
+            <h1>Ergebnisse des Fragebogens</h1>
+            {% for res  in results %}
+                {{ res | safe }}
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}
