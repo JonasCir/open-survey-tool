@@ -2,9 +2,9 @@ import pandas as pd
 import plotly.express as px
 
 from open_survey_tool.utils.logger import get_logger
-from results.models import SurveyResponses
-from results.utils.figure import Figure
-from survey.models import Surveys
+from responses.models import SurveyResponses
+from responses.utils.figure import Figure
+from surveys.models import Surveys
 
 logger = get_logger()
 
@@ -40,6 +40,7 @@ class RatingDistribution(Figure):
             # we have a completely empty DB
             zeros = [0 for _ in question_items.values()]
             dist = pd.DataFrame(data={'distribution': zeros})
+            # FIXME this does not work
 
         dist = dist.reset_index().set_index(0)
 

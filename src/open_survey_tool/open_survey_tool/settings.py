@@ -38,9 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'survey.apps.SurveysConfig',
+    'rest_framework',
+    'surveys.apps.SurveysConfig',
     'index.apps.IndexConfig',
-    'results.apps.ResultsConfig',
+    'responses.apps.ResultsConfig',
     'reporting.apps.ReportingConfig'
 ]
 
@@ -154,3 +155,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
 ]
+
+# manage settings of Django REST framework
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}

@@ -1,7 +1,7 @@
 [
   {
-    "model": "survey.Surveys",
-    "pk": null,
+    "model": "surveys.Surveys",
+    "pk": 1,
     "fields": {
       "name": "First Survey",
       "definition_json": {
@@ -323,14 +323,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "model": "results.SurveyResults",
-    "pk": null,
-    "fields": {
-      "question": "question1-1",
-      "result": "gn_bbbl"
     }
   }
 ]

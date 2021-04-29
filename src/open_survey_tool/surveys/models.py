@@ -16,7 +16,7 @@ class Surveys(models.Model):
             cursor.execute(
                 """
                 SELECT elem  -> 'type' AS type 
-                FROM survey_surveys, jsonb_array_elements(definition_json -> 'questions') AS elem
+                FROM surveys_surveys, jsonb_array_elements(definition_json -> 'questions') AS elem
                 WHERE elem -> 'name' ? %s;
                 """,
                 [question]
@@ -41,7 +41,7 @@ class Surveys(models.Model):
             cursor.execute(
                 """
                 SELECT elem -> %s AS items FROM 
-                survey_surveys, jsonb_array_elements(definition_json -> 'questions') 
+                surveys_surveys, jsonb_array_elements(definition_json -> 'questions') 
                 AS elem
                 WHERE elem -> 'name' ? %s;
                 """,

@@ -2,10 +2,10 @@ import pandas as pd
 import plotly.express as px
 
 from open_survey_tool.utils.logger import get_logger
-from results.figures.utils import mean_of_questions_in_category
-from results.models import SurveyResponses
-from results.utils.figure import Figure
-from survey.models import Surveys
+from responses.figures.utils import mean_of_questions_in_category
+from responses.models import SurveyResponses
+from responses.utils.figure import Figure
+from surveys.models import Surveys
 
 logger = get_logger()
 

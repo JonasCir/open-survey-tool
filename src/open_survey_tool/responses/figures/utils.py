@@ -1,7 +1,7 @@
 import pandas as pd
 
-from results.models import SurveyResponses
-from survey.models import Surveys
+from responses.models import SurveyResponses
+from surveys.models import Surveys
 
 
 def mean_of_questions_in_category(df, dfa):

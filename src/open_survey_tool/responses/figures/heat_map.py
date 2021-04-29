@@ -1,8 +1,8 @@
 import plotly.express as px
 
 from open_survey_tool.utils.logger import get_logger
-from results.figures.utils import do_multi_index, compute_mean
-from results.utils.figure import Figure
+from responses.figures.utils import do_multi_index, compute_mean
+from responses.utils.figure import Figure
 
 logger = get_logger()
 

@@ -1,26 +1,29 @@
-import json
 import logging
 
-from django.http import HttpResponse
 from django.views.generic import TemplateView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
-from results.figures.general_box_chart import GeneralBoxChart
-from results.figures.general_bubble import GeneralBubble
-from results.figures.heat_map import HeatMap
-from results.figures.pie_chart import PieChart
-from results.figures.scatter_matrix import ScatterMatrix
-from results.models import SurveyResponses
-from results.utils.figure import Figure
-from results.utils.rating_distribution import RatingDistribution
-from survey.models import Surveys
+from responses.figures.general_box_chart import GeneralBoxChart
+from responses.figures.general_bubble import GeneralBubble
+from responses.figures.heat_map import HeatMap
+from responses.figures.pie_chart import PieChart
+from responses.figures.scatter_matrix import ScatterMatrix
+from responses.models import SurveyResponses
+from responses.serializers import SurveyResponseSerializer
+from responses.utils.figure import Figure
+from responses.utils.rating_distribution import RatingDistribution
+from surveys.models import Surveys
 
 logger = logging.getLogger(__name__)
 
 cfg = Figure.html_config
 
 
-class Results(TemplateView):
-    template_name = "results/results.html"
+class SurveyResponse(TemplateView):
+    """
+    This page shows all responses to the survey to the user.
+    """
+    template_name = "results/survey_result.html"
 
     @staticmethod
     def create_context_data():
@@ -35,19 +38,20 @@ class Results(TemplateView):
                 res.append(f"<h2>{elem['title']}</h2>")
                 res.append(RatingDistribution.get_html(cfg, elem['name']))
 
-        return {
-            'results': res
-        }
+        return {'results': res}
 
     def get_context_data(self, **kwargs):
-        return Results.create_context_data()
+        return SurveyResponse.create_context_data()
 
-    def post(self, request):
-        submission = json.loads(request.POST.get('submission'))
-        # todo does not check if all JSON keys are set
-        result = SurveyResponses.objects.create(response=submission)
-        result.save()
-        return HttpResponse()
+
+class ResponseList(ListCreateAPIView):
+    queryset = SurveyResponses.objects.all()
+    serializer_class = SurveyResponseSerializer
+
+
+class ResponseDetail(RetrieveUpdateDestroyAPIView):
+    queryset = SurveyResponses.objects.all()
+    serializer_class = SurveyResponseSerializer
 
 
 class InternalResults(TemplateView):
