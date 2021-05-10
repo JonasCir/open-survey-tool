@@ -1,7 +1,7 @@
 [
   {
     "model": "surveys.Surveys",
-    "pk": 1,
+    "pk": "123e4567-e89b-12d3-a456-426614174000",
     "fields": {
       "name": "First Survey",
       "definition_json": {
@@ -335,7 +335,7 @@
   },
   {
     "model": "surveys.Surveys",
-    "pk": 2,
+    "pk": "123e4567-e89b-12d3-a456-426614174001",
     "fields": {
       "name": "Verkehrstraining",
       "definition_json": {

@@ -19,8 +19,8 @@ class GeneralBubble(Figure):
 
         newindex = pd.MultiIndex.from_product(
             [
-                Surveys.get_survey_items_for_question(y_axis_question).keys(),
-                Surveys.get_survey_items_for_question(x_axis_question).keys()
+                Surveys.get_survey_items_of_question(y_axis_question).keys(),
+                Surveys.get_survey_items_of_question(x_axis_question).keys()
             ],
             names=[y_axis_question, x_axis_question]
         )
@@ -30,8 +30,8 @@ class GeneralBubble(Figure):
         dfta = dftaz.reset_index()
         dfta = dfta.replace(
             {
-                y_axis_question: Surveys.get_survey_items_for_question(y_axis_question),
-                x_axis_question: Surveys.get_survey_items_for_question(x_axis_question)
+                y_axis_question: Surveys.get_survey_items_of_question(y_axis_question),
+                x_axis_question: Surveys.get_survey_items_of_question(x_axis_question)
             }
         )
 

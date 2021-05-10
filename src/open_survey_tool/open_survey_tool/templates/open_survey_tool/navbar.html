@@ -1,71 +1,40 @@
 <nav class="navbar navbar-dark navbar-expand-md">
-  <div class="container">
-    <a class="navbar-brand" href="{% url 'index' %}"
-      >{% load static %}<img src={% static "img/Logo_SagsDerPolizeiDE.png" %}
-      height="200"/></a
-    >
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            {% load static %}
+            <img src={% static "img/Logo_SagsDerPolizeiDE.png" %} height="200"/></a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        {% url 'index' as index %}
-        <li
-          class="nav-item {% if request.get_full_path == 'surveys/overview' %}active{% endif %}"
-        >
-          <a class="nav-link" href="{% url 'surveys' %}overview"
-            >Polizeipräsidium Heilbronn</a
-          >
-        </li>
-        {% url 'survey_overview_single' surveyid as surveyoverview %}
-        <li
-          class="nav-item {% if request.get_full_path == surveyoverview %}active{% endif %}"
-        >
-          <a class="nav-link" href="{% url 'survey_overview_single' surveyid %}"
-            >Aktuelle Umfrage</a
-          >
-        </li>
-        {% url 'survey_view' surveyid as surveys %}
-        <li
-          class="nav-item {% if request.get_full_path == surveys %}active{% endif %}"
-        >
-          <a class="nav-link" href="{% url 'survey_view' surveyid %}"
-            >Fragebogen</a
-          >
-        </li>
-        <div></div>
-        {% url 'response_view' surveyid as responses %}
-        <li
-          class="nav-item {% if request.get_full_path == responses %}active{% endif %}"
-        >
-          <a class="nav-link" href="{% url 'response_view' surveyid %}"
-            >Ergebnisse</a
-          >
-        </li>
-        {% url 'reporting' as reporting %}
-        <!--<li
-          class="nav-item {% if request.get_full_path == reporting %}active{% endif %}"
-        >
-          <a class="nav-link" href="{% url 'reporting' %}">Reporting</a>
-        </li>
-        {% url 'response_internal_view' as internal_responses %}
-        <li
-          class="nav-item {% if request.get_full_path == internal_responses %}active{% endif %}"
-        >
-          <a class="nav-link" href="{% url 'response_internal_view' %}"
-            >Internal Responses</a
-          >
-        </li>-->
-      </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                {% url 'index' as index %}
+                <li class="nav-item {% if request.get_full_path == 'surveys/overview' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'surveys' %}overview">Polizeipräsidium Heilbronn</a>
+                </li>
+                {% url 'survey_overview_details' survey_id as survey_overview %}
+                <li class="nav-item {% if request.get_full_path == survey_overview %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'survey_overview_details' survey_id %}">Aktuelle Umfrage</a>
+                </li>
+                {% url 'survey_view' survey_id as surveys %}
+                <li class="nav-item {% if request.get_full_path == surveys %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'survey_view' survey_id %}">Fragebogen</a>
+                </li>
+                <div></div>
+                {% url 'result_view' survey_id as responses %}
+                <li class="nav-item {% if request.get_full_path == responses %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'result_view' survey_id %}">Ergebnisse</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>

@@ -1,14 +1,16 @@
 import json
 
+import uuid as uuid
 from django.db import models, connection
 
 
 class Surveys(models.Model):
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4)
     name = models.CharField(max_length=32)
-    definition_json = models.JSONField(default=dict)
+    definition_json = models.JSONField()
 
     @staticmethod
-    def get_survey_type_by_question(question):
+    def get_survey_type_of_question(question):
         """
         Returns the survey.js question type for a given question.
         """
@@ -27,13 +29,13 @@ class Surveys(models.Model):
             return tmp
 
     @staticmethod
-    def get_survey_items_for_question(question):
+    def get_survey_items_of_question(question):
         """
         Return the question items (the item name and the human readable name) as dict.
         :param question:
         :return:
         """
-        _type = Surveys.get_survey_type_by_question(question)
+        _type = Surveys.get_survey_type_of_question(question)
 
         type_to_item_key = {'radiogroup': 'choices', 'rating': 'rateValues'}
         item_key = type_to_item_key[_type]

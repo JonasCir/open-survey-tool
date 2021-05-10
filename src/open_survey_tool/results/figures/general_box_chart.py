@@ -67,8 +67,8 @@ class GeneralBoxChart(Figure):
         df["Kontext"] = dfax["question1_2"]
 
         df = df.replace({
-            'Rolle': Surveys.get_survey_items_for_question('question1_1'),
-            'Kontext': Surveys.get_survey_items_for_question('question1_2')}
+            'Rolle': Surveys.get_survey_items_of_question('question1_1'),
+            'Kontext': Surveys.get_survey_items_of_question('question1_2')}
         )
 
         df["Rolle-Kontext"] = df["Rolle"] + " bei " + df["Kontext"]

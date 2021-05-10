@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.views.generic import TemplateView
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
@@ -15,19 +16,30 @@ class Survey(TemplateView):
     template_name = "survey/survey.html"
 
     def get_context_data(self, **kwargs):
-        return {"surveyid": kwargs["surveyid"]}
+        survey = Surveys.objects.filter(uuid=kwargs['survey_id']).first()
+        if survey is not None:
+            return {"survey_id": kwargs["survey_id"]}
+        else:
+            raise Http404("Questions for this survey are not available.")
 
 
-class SurveyOverviewSingle(TemplateView):
+class SurveyOverviewDetails(TemplateView):
     """
     This page shows a survey to the user.
     """
     template_name = "survey/index.html"
 
     def get_context_data(self, **kwargs):
-        overviewData = Surveys.objects.filter(
-            id=kwargs["surveyid"]).first().definition_json['overview']
-        return {"time": overviewData["time"], "description": overviewData["description"], "contact": overviewData["contact"], "duration": overviewData["duration"], "title": overviewData["title"], "img": "img/"+overviewData["img"], "surveyid": kwargs["surveyid"]}
+        survey = Surveys.objects.filter(uuid=kwargs['survey_id']).first()
+
+        if survey is not None:
+            overview_data = survey.definition_json['overview']
+        else:
+            raise Http404("Details for this survey are not available.")
+
+        overview_data['survey_id'] = kwargs['survey_id']
+        overview_data['img'] = 'img/' + overview_data['img']
+        return overview_data
 
 
 class SurveyOverviewAll(TemplateView):
@@ -37,19 +49,28 @@ class SurveyOverviewAll(TemplateView):
     template_name = "survey/all.html"
 
     def get_context_data(self, **kwargs):
-        overviewData = Surveys.objects.order_by('id').values()
+        overview_data = Surveys.objects.order_by('uuid').values()
+        # todo show something like "Aktuell gibt es keine Umfragen" if overview data is empty
         res = list()
-        for elem in overviewData:
-            res.append({"time": elem["definition_json"]["overview"]["time"], "duration": elem["definition_json"]["overview"]["duration"],
-                       "title": elem["definition_json"]["overview"]["title"], "img": "img/"+elem["definition_json"]["overview"]["img"], "surveyid": elem["id"]})
+        for elem in overview_data:
+            overview = elem["definition_json"]["overview"]
+            res.append({
+                "time": overview["time"],
+                "duration": overview["duration"],
+                "title": overview["title"],
+                "img": "img/" + overview["img"],
+                "survey_id": elem["uuid"]
+            })
         return {'surveys': res}
 
 
 class SurveyList(ListCreateAPIView):
     queryset = Surveys.objects.all()
     serializer_class = SurveySerializer
+    lookup_url_kwarg = 'survey_id'
 
 
-class SurveyDetail(RetrieveUpdateDestroyAPIView):
+class SurveyDetails(RetrieveUpdateDestroyAPIView):
     queryset = Surveys.objects.all()
     serializer_class = SurveySerializer
+    lookup_url_kwarg = 'survey_id'
