@@ -15,7 +15,7 @@ class Survey(TemplateView):
     template_name = "survey/survey.html"
 
     def get_context_data(self, **kwargs):
-        return {"pk": kwargs["pk"]}
+        return {"surveyid": kwargs["surveyid"]}
 
 
 class SurveyOverviewSingle(TemplateView):
@@ -26,8 +26,8 @@ class SurveyOverviewSingle(TemplateView):
 
     def get_context_data(self, **kwargs):
         overviewData = Surveys.objects.filter(
-            pk=kwargs["pk"]).first().definition_json['overview']
-        return {"time": overviewData["time"], "description": overviewData["description"], "contact": overviewData["contact"], "duration": overviewData["duration"], "title": overviewData["title"], "img": "img/"+overviewData["img"], "pk": kwargs["pk"]}
+            id=kwargs["surveyid"]).first().definition_json['overview']
+        return {"time": overviewData["time"], "description": overviewData["description"], "contact": overviewData["contact"], "duration": overviewData["duration"], "title": overviewData["title"], "img": "img/"+overviewData["img"], "surveyid": kwargs["surveyid"]}
 
 
 class SurveyOverviewAll(TemplateView):
@@ -37,11 +37,11 @@ class SurveyOverviewAll(TemplateView):
     template_name = "survey/all.html"
 
     def get_context_data(self, **kwargs):
-        overviewData = Surveys.objects.order_by('pk').values()
+        overviewData = Surveys.objects.order_by('id').values()
         res = list()
         for elem in overviewData:
             res.append({"time": elem["definition_json"]["overview"]["time"], "duration": elem["definition_json"]["overview"]["duration"],
-                       "title": elem["definition_json"]["overview"]["title"], "img": "img/"+elem["definition_json"]["overview"]["img"], "pk": elem["id"]})
+                       "title": elem["definition_json"]["overview"]["title"], "img": "img/"+elem["definition_json"]["overview"]["img"], "surveyid": elem["id"]})
         return {'surveys': res}
 
 

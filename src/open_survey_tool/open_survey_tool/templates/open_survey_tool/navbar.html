@@ -22,25 +22,29 @@
         <li
           class="nav-item {% if request.get_full_path == index %}active{% endif %}"
         >
-          <a class="nav-link" href="{% url 'index' %}">Start</a>
+          <a class="nav-link" href="{% url 'surveys' %}overview"
+            >Polizeipräsidium Heilbronn</a
+          >
         </li>
         {% url 'survey_view' 1 as surveys %}
         <li
           class="nav-item {% if request.get_full_path == surveys %}active{% endif %}"
         >
-          <a class="nav-link" href="{% url 'survey_view' pk %}">Fragebogen</a>
+          <a class="nav-link" href="{% url 'survey_view' surveyid %}"
+            >Fragebogen</a
+          >
         </li>
         <div></div>
         {% url 'responses' as responses %}
         <li
           class="nav-item {% if request.get_full_path == results %}active{% endif %}"
         >
-          <a class="nav-link" href="{% url 'responses' %}view/{{pk}}"
+          <a class="nav-link" href="{% url 'responses' %}view/{{surveyid}}"
             >Ergebnisse</a
           >
         </li>
         {% url 'reporting' as reporting %}
-        <li
+        <!--<li
           class="nav-item {% if request.get_full_path == reporting %}active{% endif %}"
         >
           <a class="nav-link" href="{% url 'reporting' %}">Reporting</a>
@@ -52,7 +56,7 @@
           <a class="nav-link" href="{% url 'response_internal_view' %}"
             >Internal Responses</a
           >
-        </li>
+        </li>-->
       </ul>
     </div>
   </div>

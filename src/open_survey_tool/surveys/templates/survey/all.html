@@ -22,12 +22,14 @@
     <div class="twogrid">
       {% load static %}<img src={% static res.img "" %} height="300"/>
       <div>
-        {% url 'survey_view' 1 as surveys %}
+        {% url 'survey_overview_single' 1 as surveys %}
         <h2>Umfrage:<br />{{res.title}}</h2>
         <span>Dauer: {{res.duration}}</span><br />
         <span>Erstellt: {{res.time}}</span><br />
-        <a class="buttonOverview" href="{% url 'survey_view' res.pk %}"
-          >Jetzt teilnehmen</a
+        <a
+          class="buttonOverview"
+          href="{% url 'survey_overview_single' res.surveyid %}"
+          >Zur Umfrage</a
         >
       </div>
     </div>

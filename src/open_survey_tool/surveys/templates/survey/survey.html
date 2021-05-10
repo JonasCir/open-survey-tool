@@ -17,7 +17,7 @@
   <script type="text/javascript">
     Survey.StylesManager.applyTheme("modern");
 
-    $.getJSON("/surveys/"+{{ pk }}, function (content) {
+    $.getJSON("/surveys/"+{{ surveyid }}, function (content) {
       // get survey definition from server
       console.log(content);
       window.survey = new Survey.Model(content["definition_json"]);
@@ -25,13 +25,13 @@
       survey.onComplete.add(function (result) {
         $.post("/results/", {
           csrfmiddlewaretoken: "{{ csrf_token }}",
-          survey: "{{ pk }}",
+          survey: "{{ surveyid }}",
           response: JSON.stringify(result.data)
         });
       });
       survey.locale = "de";
       survey.completedHtml =
-        "<div><b>Vielen Dank für ihre Teilnahme</b><br/><a  href='{% url 'response_view' pk %}'>Wie sind die Ergebnisse bisher?</a></div>";
+        "<div><b>Vielen Dank für ihre Teilnahme</b><br/><a  href='{% url 'response_view' surveyid %}'>Wie sind die Ergebnisse bisher?</a></div>";
       survey.render("surveyElement");
     });
   </script>
