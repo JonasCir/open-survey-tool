@@ -20,13 +20,21 @@
       <ul class="navbar-nav mr-auto">
         {% url 'index' as index %}
         <li
-          class="nav-item {% if request.get_full_path == index %}active{% endif %}"
+          class="nav-item {% if request.get_full_path == 'surveys/overview' %}active{% endif %}"
         >
           <a class="nav-link" href="{% url 'surveys' %}overview"
             >Polizeipräsidium Heilbronn</a
           >
         </li>
-        {% url 'survey_view' 1 as surveys %}
+        {% url 'survey_overview_single' surveyid as surveyoverview %}
+        <li
+          class="nav-item {% if request.get_full_path == surveyoverview %}active{% endif %}"
+        >
+          <a class="nav-link" href="{% url 'survey_overview_single' surveyid %}"
+            >Aktuelle Umfrage</a
+          >
+        </li>
+        {% url 'survey_view' surveyid as surveys %}
         <li
           class="nav-item {% if request.get_full_path == surveys %}active{% endif %}"
         >
@@ -35,11 +43,11 @@
           >
         </li>
         <div></div>
-        {% url 'responses' as responses %}
+        {% url 'response_view' surveyid as responses %}
         <li
-          class="nav-item {% if request.get_full_path == results %}active{% endif %}"
+          class="nav-item {% if request.get_full_path == responses %}active{% endif %}"
         >
-          <a class="nav-link" href="{% url 'responses' %}view/{{surveyid}}"
+          <a class="nav-link" href="{% url 'response_view' surveyid %}"
             >Ergebnisse</a
           >
         </li>
