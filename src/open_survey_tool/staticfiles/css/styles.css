@@ -47,8 +47,12 @@ body {
 .imgcol {
   text-align: center;
 }
+.twogrid img {
+  max-width: 100%;
+}
 .threegrid img {
   width: 18em;
+  max-width: 100%;
   height: auto;
 }
 .results h1 {
