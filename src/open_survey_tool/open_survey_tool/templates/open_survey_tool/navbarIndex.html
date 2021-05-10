@@ -17,41 +17,28 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav">
         {% url 'index' as index %}
         <li
           class="nav-item {% if request.get_full_path == index %}active{% endif %}"
         >
           <a class="nav-link" href="{% url 'index' %}">Start</a>
         </li>
-        {% url 'survey_view' 1 as surveys %}
+        {% url 'surveys' as surveys %}
         <li
           class="nav-item {% if request.get_full_path == surveys %}active{% endif %}"
         >
-          <a class="nav-link" href="{% url 'survey_view' pk %}">Fragebogen</a>
-        </li>
-        <div></div>
-        {% url 'responses' as responses %}
-        <li
-          class="nav-item {% if request.get_full_path == results %}active{% endif %}"
-        >
-          <a class="nav-link" href="{% url 'responses' %}view/{{pk}}"
-            >Ergebnisse</a
+          <a class="nav-link" href="{% url 'surveys' %}overview"
+            >Polizeipräsidium Heilbronn</a
           >
         </li>
+      </ul>
+      <ul class="navbar-nav">
         {% url 'reporting' as reporting %}
         <li
           class="nav-item {% if request.get_full_path == reporting %}active{% endif %}"
         >
-          <a class="nav-link" href="{% url 'reporting' %}">Reporting</a>
-        </li>
-        {% url 'response_internal_view' as internal_responses %}
-        <li
-          class="nav-item {% if request.get_full_path == internal_responses %}active{% endif %}"
-        >
-          <a class="nav-link" href="{% url 'response_internal_view' %}"
-            >Internal Responses</a
-          >
+          <!--<a class="nav-link" href="{% url 'reporting' %}">Über das Projekt</a>-->
         </li>
       </ul>
     </div>

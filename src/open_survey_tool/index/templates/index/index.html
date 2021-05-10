@@ -1,60 +1,57 @@
-{% extends "open_survey_tool/default.html" %} {% block content %}
-    <div class="banner">
-        <div class="container">
-            {% load static %}<img src={% static "img/feedback.jpg" %} height="400"/>
-            <div>
-                <h1>Polizeipräsidium Heilbronn</h1>
-                <h2>Allgemeine Zufriedenheit</h2>
-            </div>
-            <a class="button" href="{% url 'surveys' %}">Zum Fragebogen</a>
-        </div>
+{% extends "open_survey_tool/defaultIndex.html" %} {% block content %}
+<div class="container twogrid" style="margin: 8rem auto">
+  <div class="imgcol">
+    {% load static %}<img src={% static "img/Logo_SagsDerPolizeiDE.png" %}
+    height="300"/>
+  </div>
+  <div>
+    <h1>Du hast Lob oder Kritik?</h1>
+    <span>
+      Hilf uns dabei unsere Arbeit zu verbessern und teile uns vollkommen anonym
+      deine Erfahrungen mit
+    </span>
+  </div>
+</div>
+<div style="background-color: #003c64; color: white; padding: 4rem 0">
+  <div class="container twogrid">
+    <div>
+      <h2>
+        "Sag's der Polizei" ist zur Zeit für das Polizeipräsidium Heilbronn in
+        Entwicklung
+      </h2>
+      <span>
+        Das Ziel ist, dass in Zukunft aber auch weitere Präsidien und
+        öffentliche Einrichtungen das Tool verwenden um qualitatives Feedback
+        von Ihnen zu erhalten.
+      </span>
     </div>
-    <div class="container surveygrid">
-        <div class="leftgrid">
-            <h2>Polizeipräsidium Heilbronn, Baden-Wüttemberg</h2>
-            <hr/>
-            <h3>Veröffentlichkeitsdatum</h3>
-            <span>Freitag, den 19.03.2021</span>
-            <hr/>
-            <h3>Ansprechpartnerin</h3>
-            <span>Frau Marie Muster,<br/>Kriminalrätin</span>
-            <br/><br/>
-            <span>Franzstraße 42,<br/>74076 Heilbronn</span>
-        </div>
-        <div class="rightgrid">
-            <div>
-                <h3>Beschreibung</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                    eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                    voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                    clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-                    amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                    nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-                    sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-                    rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                    ipsum dolor sit amet.
-                </p>
-                <h3>Bearbeitungsdauer</h3>
-                <p>Circa 2 Minuten</p>
-            </div>
-            <div>
-                <h2>Weitere Umfragen</h2>
-                <div class="othersurveys">
-                    <div>
-                        <img src={% static "img/feedback.jpg" %} height="400"/>
-                        <h3>Verkehrsschulung für Kindergartenkinder</h3>
-                    </div>
-                    <div>
-                        <img src={% static "img/feedback.jpg" %} height="400"/>
-                        <h3>Berufeinsteigermesse Abiturienten:innen</h3>
-                    </div>
-                    <div>
-                        <img src={% static "img/feedback.jpg" %} height="400"/>
-                        <h3>Querdenker Demo 7.3.2021 Heilbronn</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="imgcol">
+      <img src={% static "img/Deutschlandkarte.png" %} height="400"/>
     </div>
+  </div>
+</div>
+<div style="background-color: #003c64; color: white; padding: 4rem 0">
+  <div class="container">
+    <h2 style="text-align: center">Das Sagen unsere Nutzer</h2>
+    <div class="twogrid" style="margin-top: 2em">
+      <div></div>
+      <div>
+        <p>
+          "Wir möchten in den Austausch mit den Menschen vor Ort kommen. Sag's
+          der Polizei hilft uns dabei ein transparentes Stimmungsbild von
+          Bürgern, Kunden und unseren Mitarbeitern einzuhilen."
+        </p>
+        <span>- Sibylle Schieck, Polizeipräsidium Heilbronn</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" style="margin: 4rem auto">
+  <h2 style="text-align: center">Sag's der Polizei wird unterstützt von:</h2>
+  <div class="threegrid">
+    <div><img src={% static "img/updatede.jpg" %} height="200"/></div>
+    <div><img src={% static "img/polizeibwheilbronn.jpg" %} height="200"/></div>
+    <div><img src={% static "img/BKAMT.png" %} height="200"/></div>
+  </div>
+</div>
 {% endblock content %}

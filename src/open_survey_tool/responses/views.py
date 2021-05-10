@@ -26,9 +26,10 @@ class SurveyResponse(TemplateView):
     template_name = "responses/survey_result.html"
 
     @staticmethod
-    def create_context_data():
+    def create_context_data(self, kwargs):
         # todo still a little bit hacky but shows the idea and works quite nice
-        study_config = Surveys.objects.first().definition_json['questions']
+        study_config = Surveys.objects.filter(
+            id=kwargs["pk"]).first().definition_json['questions']
         res = list()
         for elem in study_config:
             if elem['type'] == 'html':
@@ -38,10 +39,10 @@ class SurveyResponse(TemplateView):
                 res.append(f"<h2>{elem['title']}</h2>")
                 res.append(RatingDistribution.get_html(cfg, elem['name']))
 
-        return {'results': res}
+        return {'results': res, 'pk': kwargs["pk"]}
 
     def get_context_data(self, **kwargs):
-        return SurveyResponse.create_context_data()
+        return SurveyResponse.create_context_data(self, kwargs)
 
 
 class ResponseList(ListCreateAPIView):
@@ -67,5 +68,6 @@ class InternalResults(TemplateView):
             'box_verhalten': GeneralBoxChart.get_html(cfg, 'Verhalten'),
             'box_kompetenz': GeneralBoxChart.get_html(cfg, 'Kompetenz'),
             'box_information': GeneralBoxChart.get_html(cfg, 'Information'),
-            'box_vertrauen': GeneralBoxChart.get_html(cfg, 'Vertrauen')
+            'box_vertrauen': GeneralBoxChart.get_html(cfg, 'Vertrauen'),
+            'pk': kwargs["pk"]
         }
