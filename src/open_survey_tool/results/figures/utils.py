@@ -28,8 +28,8 @@ def compute_role_per_context():
 
 def do_multi_index(dfa, dfax, dft):
     newindex = pd.MultiIndex.from_product([
-        Surveys.get_survey_items_for_question('question1_1').keys(),
-        Surveys.get_survey_items_for_question('question1_2').keys()],
+        Surveys.get_survey_items_of_question('question1_1').keys(),
+        Surveys.get_survey_items_of_question('question1_2').keys()],
         names=["Rolle", "Kontext"]
     )
     dftz = dft.reindex(newindex, fill_value=0)
@@ -40,8 +40,8 @@ def do_multi_index(dfa, dfax, dft):
     # print(dfa, dftax, "index", dfa.index, dftax.index)
     dfau = dfa.merge(dftax, left_on=["Rolle", "Kontext"], right_index=True)
     # print(dfau)
-    dfau = dfau.replace({'Rolle': Surveys.get_survey_items_for_question('question1_1'),
-                         'Kontext': Surveys.get_survey_items_for_question('question1_2')})
+    dfau = dfau.replace({'Rolle': Surveys.get_survey_items_of_question('question1_1'),
+                         'Kontext': Surveys.get_survey_items_of_question('question1_2')})
     dfau["Rolle-Kontext"] = dfau["Rolle"] + " bei " + dfau["Kontext"]
     return dfau
 

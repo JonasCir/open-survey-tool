@@ -1,3 +1,3 @@
-# Result page
+# Responses
 
-Internal results are more detailed.
+REST endpoint to receive survey responses.

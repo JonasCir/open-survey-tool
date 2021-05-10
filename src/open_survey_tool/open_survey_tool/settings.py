@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'surveys.apps.SurveysConfig',
     'index.apps.IndexConfig',
     'responses.apps.ResultsConfig',
-    'reporting.apps.ReportingConfig'
+    'reporting.apps.ReportingConfig',
+    'results.apps.ResultsConfig'
 ]
 
 MIDDLEWARE = [

@@ -4,8 +4,8 @@ import pdfkit
 from django.core.files.temp import NamedTemporaryFile
 from django.template import loader
 
-from responses.utils.figure import Figure
-from responses.views import SurveyResponse
+from results.utils.figure import Figure
+from results.views import SurveyResult
 
 template = loader.get_template('reporting/pdf/report.html')
 cfg = Figure.pdf_config
@@ -20,7 +20,7 @@ def generate_pdf_report():
 
     context = {
         'introduction': 'Quidem natus voluptatibus laboriosam quis aspernatur voluptatem optio provident.',
-        'results': SurveyResponse.create_context_data()['results']
+        'results': SurveyResult.create_context_data()['results']
     }
 
     rendered = template.render(context)

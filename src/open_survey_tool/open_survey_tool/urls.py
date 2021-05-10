@@ -1,4 +1,5 @@
-"""open_survey_tool URL Configuration
+"""
+open_survey_tool URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -20,6 +21,7 @@ urlpatterns = [
     path('', include('index.urls')),
     path('admin/', admin.site.urls),
     path('surveys/', include('surveys.urls')),
-    path('reporting', include('reporting.urls')),
-    path('results/', include('responses.urls'))
+    path('reporting/', include('reporting.urls')),
+    path('responses/', include('responses.urls')),
+    path('results/', include('results.urls'))
 ]
