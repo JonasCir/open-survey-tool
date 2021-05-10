@@ -26,7 +26,7 @@
         </li>
         {% url 'surveys' as surveys %}
         <li
-          class="nav-item {% if request.get_full_path == surveys %}active{% endif %}"
+          class="nav-item {% if request.get_full_path == '/surveys/overview' %}active{% endif %}"
         >
           <a class="nav-link" href="{% url 'surveys' %}overview"
             >Polizeipräsidium Heilbronn</a
