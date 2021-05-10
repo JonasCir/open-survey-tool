@@ -6,7 +6,7 @@ body {
   height: 20em;
   color: white;
 }
-img {
+.navbar img {
   height: 3em;
 }
 .navbar {
@@ -15,12 +15,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
-}
-.navbar ul {
-  width: 100%;
-}
-.navbar ul > div {
-  width: 100%;
+  border-bottom: 1px solid white;
 }
 .navbar a {
   color: white !important;
@@ -28,6 +23,37 @@ img {
 }
 .navbar .nav-item.active a {
   color: #ffcb05 !important;
+}
+.twogrid {
+  display: grid;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
+}
+.threegrid {
+  display: grid;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
+}
+.container.twogrid span {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+.imgcol {
+  text-align: center;
+}
+.twogrid img {
+  max-width: 100%;
+}
+.threegrid img {
+  width: 18em;
+  max-width: 100%;
+  height: auto;
 }
 .results h1 {
   font-size: 1.5em;
@@ -120,19 +146,13 @@ img {
   height: 8em;
 }
 footer {
-  margin-top: 5em;
+  margin-top: 2.5em;
+  padding-top: 2.5em;
   border-top: 1px solid #bfbfbf;
 }
 footer .footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
-}
-.credits {
-  justify-content: flex-end;
-}
-footer ul {
-  display: flex;
-  padding: 2.5em 0em;
 }
 footer ul > div {
   width: 100%;
@@ -142,4 +162,27 @@ footer ul > li {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
   white-space: nowrap;
+}
+.buttonOverview {
+  background-color: white;
+  color: #003c64;
+  padding: 0.5em 1em;
+  display: inline-block;
+  margin-top: 2em;
+}
+.surveyOverviewBox > .container + .container {
+  margin-top: 2em;
+}
+@media (min-width: 768px) {
+  .navbar-collapse {
+    display: flex;
+    justify-content: space-between;
+  }
+  footer ul {
+    display: flex;
+    padding: 2.5em 0em;
+  }
+  .credits {
+    justify-content: flex-end;
+  }
 }

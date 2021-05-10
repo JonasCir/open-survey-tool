@@ -1,0 +1,47 @@
+{% extends "open_survey_tool/defaultIndex.html" %} {% block content %}
+<div class="container twogrid" style="margin: 8rem auto">
+  <div class="imgcol">
+    {% load static %}<img src={% static "img/Logo_SagsDerPolizeiDE.png" %}
+    height="300"/>
+  </div>
+  <div>
+    <h1>Du hast Lob oder Kritik?</h1>
+    <span>
+      Das Polizeipräsidium Heilbronn sucht den offenen und ehrlichen Austausch.
+      Nehmen Sie an unseren Umfragen teil, um völlig anonym ihr Feedback abgeben
+      zu können.
+    </span>
+  </div>
+</div>
+<div
+  class="surveyOverviewBox"
+  style="background-color: #003c64; color: white; padding: 4rem 0"
+>
+  {% for res in surveys %}
+  <div class="container">
+    <div class="twogrid">
+      {% load static %}<img src={% static res.img "" %} height="300"/>
+      <div>
+        {% url 'survey_overview_single' 1 as surveys %}
+        <h2>Umfrage:<br />{{res.title}}</h2>
+        <span>Dauer: {{res.duration}}</span><br />
+        <span>Erstellt: {{res.time}}</span><br />
+        <a
+          class="buttonOverview"
+          href="{% url 'survey_overview_single' res.surveyid %}"
+          >Zur Umfrage</a
+        >
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<div class="container" style="margin: 4rem auto">
+  <h2 style="text-align: center">Sag's der Polizei wird unterstützt von:</h2>
+  <div class="threegrid">
+    <div><img src={% static "img/updatede.jpg" %} height="200"/></div>
+    <div><img src={% static "img/polizeibwheilbronn.jpg" %} height="200"/></div>
+    <div><img src={% static "img/BKAMT.png" %} height="200"/></div>
+  </div>
+</div>
+{% endblock content %}
