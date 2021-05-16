@@ -24,9 +24,8 @@ class RatingDistribution(Figure):
     @staticmethod
     def compute(question):
         # get all ratings from the DB for the given question
-        df = pd.DataFrame.from_records(
-            SurveyResponses.objects.values_list(f'response__{question}')
-        )
+        records = SurveyResponses.objects.values_list(f'response__{question}')
+        df = pd.DataFrame.from_records(records)
 
         # map the items to human readable description
         question_items = Surveys.get_survey_items_of_question(question)

@@ -1,7 +1,0 @@
-Django
-djangorestframework
-psycopg2
-plotly
-pdfkit
-pandas
-uuid

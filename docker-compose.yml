@@ -1,3 +1,6 @@
+### FOR LOCAL DEVELOPMENT ONLY ###
+### see infrastructure repo for staging and production ready deployment ###
+
 version: '3.9'
 services:
   survey:
@@ -6,7 +9,7 @@ services:
     env_file:
       - .env
     ports:
-      - "8080:8080"
+      - "8080:8000"
     depends_on: [ postgres ]
 
   postgres:
