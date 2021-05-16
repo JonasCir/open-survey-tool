@@ -26,8 +26,8 @@ SECRET_KEY = secrets.token_hex(32)
 DEBUG = True if os.getenv('DJANGO_DEBUG', 'True') == 'True' else False
 
 # SECURITY WARNING: this must match the domain
-ALLOWED_HOSTS = ['localhost', '127.0.0.1',
-                 'sagsderpolizei.eu.pythonanywhere.com']
+# todo this needs cleanup
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'sagsderpolizei.eu.pythonanywhere.com','.eu-central-1.compute.amazonaws.com']
 
 # Application definition
 
