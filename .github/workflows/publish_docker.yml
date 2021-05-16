@@ -15,8 +15,3 @@ jobs:
         with:
           repository: 'JonasCir/open-survey-infra'
           path: infra
-      - name: Checkout repo
-        uses: actions/checkout@v2
-        with:
-          path: repo
-      - run: cp infra/docker/staging/setup_and_run.sh repo/src/config
