@@ -27,7 +27,8 @@ DEBUG = True if os.getenv('DJANGO_DEBUG', 'True') == 'True' else False
 
 # SECURITY WARNING: this must match the domain
 # todo this needs cleanup
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'sagsderpolizei.eu.pythonanywhere.com','.eu-central-1.compute.amazonaws.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'sagsderpolizei.eu.pythonanywhere.com',
+                 '.eu-central-1.compute.amazonaws.com']
 
 # Application definition
 
@@ -154,8 +155,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "staticfiles"),
+    os.path.join(BASE_DIR, "static"),
 ]
 
 # manage settings of Django REST framework
