@@ -28,7 +28,7 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
-          repository: jonascir/open-survey-tool/open-survey-tool
+          registry: ghcr.io
+          repository: jonascir/open-survey-tool
           tag_with_ref: true
           path: repo/src/
