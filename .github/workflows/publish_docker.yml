@@ -1,4 +1,4 @@
-name: Publish Docker Image
+name: CI/CD
 on:
   pull_request:
     branches: [ main ]
@@ -32,3 +32,12 @@ jobs:
           repository: jonascir/open-survey-tool
           tag_with_ref: true
           path: repo/src/
+  deploy:
+    name: Deploy to staging
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+https://github:
+  com/marketplace/actions/docker-deployment:
