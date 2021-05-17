@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [ main ]
   push:
-    branches: [ main, develop ]
+    branches: [ main, development ]
 
 jobs:
   push_to_registry:
