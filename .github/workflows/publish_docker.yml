@@ -33,11 +33,12 @@ jobs:
           tag_with_ref: true
           path: repo/src/
   deploy:
+    # https://github.com/marketplace/actions/docker-deployment:
     name: Deploy to staging
     runs-on: ubuntu-20.04
+    needs: [ 'push_to_registry' ]
     steps:
+
       - name: Checkout code
         uses: actions/checkout@v2
 
-https://github:
-  com/marketplace/actions/docker-deployment:
