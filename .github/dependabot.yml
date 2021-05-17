@@ -9,7 +9,7 @@ updates:
       interval: "daily"
 
   - package-ecosystem: "docker"
-    directory: "/"
+    directory: "/src"
     schedule:
       interval: "daily"
 
