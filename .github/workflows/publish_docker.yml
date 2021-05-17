@@ -31,4 +31,4 @@ jobs:
           registry: docker.pkg.github.com
           repository: jonascir/open-survey-tool/open-survey-tool
           tag_with_ref: true
-          path: src/
+          path: repo/src/
