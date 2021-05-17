@@ -36,7 +36,7 @@ jobs:
     # https://github.com/marketplace/actions/docker-deployment:
     name: Deploy to staging
     runs-on: ubuntu-20.04
-    needs: [ 'push_to_registry' ]
+    needs: [ push_to_registry ]
     steps:
 
       - name: Checkout code
