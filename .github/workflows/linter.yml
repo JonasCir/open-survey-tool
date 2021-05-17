@@ -5,10 +5,8 @@ name: Lint Code Base
 
 on:
   push:
-    branches: [ main ]
-    # Remove the line above to run when pushing to main
   pull_request:
-    branches: [ main ]
+    branches: [ development ]
 
 jobs:
   build:
@@ -26,5 +24,5 @@ jobs:
         uses: github/super-linter@v3
         env:
           VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
+          DEFAULT_BRANCH: development
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
