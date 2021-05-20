@@ -1,53 +1,54 @@
 {% extends "open_survey_tool/default.html" %} {% block content %}
-<div class="banner">
-  <div class="container">
-    {% load static %}<img src={% static img "" %} height="400"/>
-    <div>
-      <h1>Polizeipräsidium Heilbronn</h1>
-      <h2>{{title}}</h2>
-    </div>
-    <a class="button" href="{% url 'surveys' %}view/{{ survey_id }}"
-      >Jetzt Teilnehmen</a
-    >
-  </div>
-</div>
-<div class="container surveygrid">
-  <div class="leftgrid">
-    <h2>Polizeipräsidium Heilbronn, Baden-Wüttemberg</h2>
-    <hr />
-    <h3>Veröffentlichkeitsdatum</h3>
-    <span>{{ time }}</span>
-    <hr />
-    <h3>Ansprechpartnerin</h3>
-    {{ contact |safe }}
-  </div>
-  <div class="rightgrid">
-    <div>
-      <h3>Beschreibung</h3>
-      {{ description |safe }}
-      <h3>Bearbeitungsdauer</h3>
-      <p>{{ duration }}</p>
-      <a class="button" href="{% url 'surveys' %}view/{{ survey_id }}"
-        >Jetzt Teilnehmen</a
-      >
-    </div>
-    <div>
-      <h2>Weitere Umfragen - DEMO INHALT</h2>
-      <div class="othersurveys">
-        <div>
-          <img src={% static "img/verkehrserziehung.jpg" %} height="400"/>
-          <h3>Verkehrstraining in der der Kindertageseinrichtung</h3>
+    <div class="banner">
+        <div class="container">
+            {% load static %}
+            <img src="{% static "img/feedback.jpg" %}" height="400"/>
+            <div>
+                <h1>Polizeipräsidium Heilbronn</h1>
+                <h2>{{ title }}</h2>
+            </div>
+            <a class="button" href="{% url 'surveys' %}view/{{ survey_id }}">
+                Jetzt Teilnehmen
+            </a>
         </div>
-        <div>
-          <img src={% static "img/feedback.jpg" %} height="400"/>
-          <h3>Berufseinsteigermesse Abiturienten:innen</h3>
-        </div>
-        <div>
-          <img src={% static "img/feedback_old.jpg" %} height="400"/>
-          <h3>Querdenker Demo 7.03.2021 Heilbronn</h3>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
+    <div class="container surveygrid">
+        <div class="leftgrid">
+            <h2>Polizeipräsidium Heilbronn, Baden-Wüttemberg</h2>
+            <hr/>
+            <h3>Veröffentlichkeitsdatum</h3>
+            <span>{{ time }}</span>
+            <hr/>
+            <h3>Ansprechpartnerin</h3>
+            {{ contact |safe }}
+        </div>
+        <div class="rightgrid">
+            <div>
+                <h3>Beschreibung</h3>
+                {{ description |safe }}
+                <h3>Bearbeitungsdauer</h3>
+                <p>{{ duration }}</p>
+                <a class="button" href="{% url 'surveys' %}view/{{ survey_id }}"
+                >Jetzt Teilnehmen</a
+                >
+            </div>
+            <div>
+                <h2>Weitere Umfragen - DEMO INHALT</h2>
+                <div class="othersurveys">
+                    <div>
+                        <img src="{% static "img/verkehrserziehung.jpg" %}" height="400"/>
+                        <h3>Verkehrstraining in der der Kindertageseinrichtung</h3>
+                    </div>
+                    <div>
+                        <img src="{% static "img/feedback.jpg" %}" height="400"/>
+                        <h3>Berufseinsteigermesse Abiturienten:innen</h3>
+                    </div>
+                    <div>
+                        <img src="{% static "img/feedback_old.jpg" %}" height="400"/>
+                        <h3>Querdenker Demo 7.03.2021 Heilbronn</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

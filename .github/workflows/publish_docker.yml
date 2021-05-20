@@ -1,4 +1,4 @@
-name: CI/CD
+name: Publish Docker
 on:
   pull_request:
     branches: [ main ]
@@ -32,6 +32,7 @@ jobs:
           repository: jonascir/open-survey-tool
           tag_with_ref: true
           path: repo/src/
+
   deploy:
     # https://github.com/marketplace/actions/docker-deployment:
     name: Deploy to staging
