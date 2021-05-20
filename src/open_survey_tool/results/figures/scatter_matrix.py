@@ -1,8 +1,8 @@
 import plotly.express as px
 
 from open_survey_tool.utils.logger import get_logger
-from responses.figures.utils import compute_role_context
-from responses.utils.figure import Figure
+from results.figures.utils import compute_role_context
+from results.utils.figure import Figure
 
 logger = get_logger()
 

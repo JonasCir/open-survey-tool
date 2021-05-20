@@ -1,20 +1,47 @@
 {% extends "open_survey_tool/base.html" %} {% block body %}
-{% include "open_survey_tool/navbar.html" %}
+<nav class="navbar navbar-dark navbar-expand-md">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            {% load static %}
+            <img src={% static "img/Logo_SagsDerPolizeiDE.png" %} height="200"/></a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                {% url 'survey_overview_all' as survey_overview_all %}
+                <li class="nav-item {% if request.get_full_path == survey_overview_all %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'survey_overview_all' %}">Polizeipräsidium Heilbronn</a>
+                </li>
+                {% url 'survey_overview_details' survey_id as survey_overview_details %}
+                <li class="nav-item {% if request.get_full_path == survey_overview_details %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'survey_overview_details' survey_id %}">Ausgewählte Umfrage</a>
+                </li>
+                {% url 'survey_view' survey_id as survey_view %}
+                <li class="nav-item {% if request.get_full_path == survey_view %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'survey_view' survey_id %}">Fragebogen</a>
+                </li>
+                <div></div>
+                {% url 'result_view' survey_id as result_view %}
+                <li class="nav-item {% if request.get_full_path == result_view %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'result_view' survey_id %}">Ergebnisse</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <div style="min-height: calc(100vh - 18em)">
   {% block content %} {% endblock %}
 </div>
-<footer>
-  <div class="container footer">
-    <ul>
-      <li><a>Impressum</a></li>
-      <li><a>Datenschutz</a></li>
-      <li><a>Kontakt</a></li>
-    </ul>
-    <ul class="credits">
-      <li>2021 | Sag's der Polizei</li>
-    </ul>
-  </div>
-</footer>
 
 {% endblock body %}
