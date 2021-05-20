@@ -17,10 +17,10 @@ def generate_pdf_report():
     :return: An in-memory byte buffer which holds the generated PDF.
     :rtype io.BytesIO
     """
-
+    uuid = "123e4567-e89b-12d3-a456-426614174000"
     context = {
         'introduction': 'Quidem natus voluptatibus laboriosam quis aspernatur voluptatem optio provident.',
-        'results': SurveyResult.create_context_data()['results']
+        'results': SurveyResult.create_context_data({"survey_id": uuid})['results']
     }
 
     rendered = template.render(context)

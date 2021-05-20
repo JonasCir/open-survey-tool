@@ -1,15 +1,14 @@
 from django.http import FileResponse
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
 from reporting.pdf.report_generation import generate_pdf_report
 
 
-def index(request):
-    """
-    The index page of /reporting.
-    """
-    context = {}
-    return render(request, 'reporting/index.html', context)
+class ReportingOverview(TemplateView):
+    template_name = 'reporting/index.html'
+
+    def get_context_data(self, **kwargs):
+        return {}
 
 
 def get_report(request):

@@ -1,5 +1,6 @@
 import pandas as pd
 import plotly.express as px
+from django.http import Http404
 
 from open_survey_tool.utils.logger import get_logger
 from responses.models import SurveyResponses
@@ -58,6 +59,8 @@ class GeneralBubble(Figure):
             map(lambda x: x['response'],
                 SurveyResponses.objects.all().values())
         )
+        if dfa.empty:
+            raise Http404("Results for this survey are not available yet.")
 
         df = dfa[[y_axis_question, x_axis_question]]
         return df
