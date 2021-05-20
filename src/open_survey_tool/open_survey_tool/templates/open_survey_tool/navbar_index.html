@@ -1,3 +1,13 @@
+<div
+    style="
+      text-align: center;
+      font-size: 24px;
+      background-color: red;
+      margin: 8px;
+    "
+  >
+    Dies ist eine reine DEMO-Seite.
+  </div>
 <nav class="navbar navbar-dark navbar-expand-md">
   <div class="container">
     <a class="navbar-brand" href="{% url 'index' %}"
@@ -34,11 +44,11 @@
         </li>
       </ul>
       <ul class="navbar-nav">
-        {% url 'reporting' as reporting %}
+        {% url 'internal_demo_view' as internalresults %}
         <li
-          class="nav-item {% if request.get_full_path == reporting %}active{% endif %}"
+          class="nav-item {% if request.get_full_path == internalresults %}active{% endif %}"
         >
-          <!--<a class="nav-link" href="{% url 'reporting' %}">Über das Projekt</a>-->
+          <a class="nav-link" href="{% url 'internal_demo_view' %}">Detail Auswertung Demo</a>
         </li>
       </ul>
     </div>

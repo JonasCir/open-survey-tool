@@ -27,21 +27,24 @@
       {{ description |safe }}
       <h3>Bearbeitungsdauer</h3>
       <p>{{ duration }}</p>
+      <a class="button" href="{% url 'surveys' %}view/{{ survey_id }}"
+        >Jetzt Teilnehmen</a
+      >
     </div>
     <div>
-      <h2>Weitere Umfragen</h2>
+      <h2>Weitere Umfragen - DEMO INHALT</h2>
       <div class="othersurveys">
         <div>
-          <img src={% static "img/feedback.jpg" %} height="400"/>
-          <h3>Verkehrsschulung für Kindergartenkinder</h3>
+          <img src={% static "img/verkehrserziehung.jpg" %} height="400"/>
+          <h3>Verkehrstraining in der der Kindertageseinrichtung</h3>
         </div>
         <div>
           <img src={% static "img/feedback.jpg" %} height="400"/>
-          <h3>Berufeinsteigermesse Abiturienten:innen</h3>
+          <h3>Berufseinsteigermesse Abiturienten:innen</h3>
         </div>
         <div>
-          <img src={% static "img/feedback.jpg" %} height="400"/>
-          <h3>Querlenker Demo 7.3.2021 Heilbronn</h3>
+          <img src={% static "img/feedback_old.jpg" %} height="400"/>
+          <h3>Querdenker Demo 7.03.2021 Heilbronn</h3>
         </div>
       </div>
     </div>

@@ -12,15 +12,18 @@ def mean_of_questions_in_category(df, dfa):
 
 
 def compute_mean():
-    responses = pd.DataFrame.from_records(map(lambda x: x['response'], SurveyResponses.objects.all().values()))
-    dfa = responses.replace({"item1": 1.0, "item2": 2.0, "item3": 3.0, "item4": 4.0, "item5": None})
+    responses = pd.DataFrame.from_records(
+        map(lambda x: x['response'], SurveyResponses.objects.all().values()))
+    dfa = responses.replace(
+        {"item1": 1.0, "item2": 2.0, "item3": 3.0, "item4": 4.0, "item5": None})
     mean_of_questions_in_category(dfa, dfa)
     return dfa, responses
 
 
 def compute_role_per_context():
     dfa, responses = compute_mean()
-    responses = responses.rename(columns={"question1_1": "Rolle", "question1_2": "Kontext"})
+    responses = responses.rename(
+        columns={"question1_1": "Rolle", "question1_2": "Kontext"})
     dfz = responses[["Rolle", "Kontext"]]
     dft = dfz.value_counts().rename('Anzahl').to_frame()
     return dfa, responses, dft
@@ -51,7 +54,8 @@ def compute_role_context():
     dfa, dfax, dft = compute_role_per_context()
     # print(dft)
     dfau = do_multi_index(dfa, dfax, dft)
-    dfo = dfau[["Rolle-Kontext", "Verhalten", "Kompetenz", "Information", "Vertrauen"]]
+    dfo = dfau[["Rolle-Kontext", "Verhalten",
+                "Kompetenz", "Information", "Vertrauen"]]
     dfo = dfo.value_counts().rename('Anzahl').to_frame()
     df = dfo.reset_index()
     # print(df)
