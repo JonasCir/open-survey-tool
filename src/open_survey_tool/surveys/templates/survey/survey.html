@@ -10,12 +10,15 @@
             integrity="sha384-9ra4D8aAj6d7bADiQpmX1vrinmP9Fub8prrYixMBFHjUK/HN/Bh9+RVlBoL4+9If"
             crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
     <title>Ask a user to rate a something</title>
 {% endblock head %} {% block content %}
     <div class="container">
         <div id="surveyElement" style="display: inline-block; width: 100%"></div>
         <script type="text/javascript">
             Survey.StylesManager.applyTheme("modern");
+            const csrftoken = Cookies.get('csrftoken');
 
             $.getJSON("/surveys/" + "{{ survey_id }}", function (content) {
                 // get survey definition from server
@@ -23,12 +26,21 @@
                 window.survey = new Survey.Model(content["definition_json"]);
 
                 survey.onComplete.add(function (result) {
-                    $.post("/responses/", {
-                        csrfmiddlewaretoken: "{{ csrf_token }}",
-                        survey: "{{ survey_id }}",
-                        response: JSON.stringify(result.data)
+                    $.ajax({
+                        url: '/responses/',
+                        type: 'post',
+                        data: {
+                            survey: "{{ survey_id }}",
+                            response: JSON.stringify(result.data)
+                        },
+                        headers: {'X-CSRFToken': csrftoken},
+                        dataType: 'json',
+                        success: function (data) {
+                            console.info(data);
+                        }
                     });
                 });
+
                 survey.locale = "de";
                 survey.completedHtml =
                     "<div><b>Vielen Dank für ihre Teilnahme</b><br/><a  href='{% url 'result_view' survey_id %}'>Wie sind die Ergebnisse bisher?</a></div>";
