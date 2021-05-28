@@ -1,11 +1,6 @@
 body {
   font-family: "Roboto", sans-serif;
 }
-.banner {
-  background-color: #007bc2;
-  height: 20em;
-  color: white;
-}
 .navbar img {
   height: 3em;
 }
@@ -73,21 +68,23 @@ body {
 
 .banner {
   background-color: #007bc2;
-  height: 20em;
+  min-height: 20em;
   color: white;
+  display: flex;
+  align-items: center;
 }
 
 .banner .container {
   display: flex;
-  height: 100%;
-  align-items: flex-end;
+  align-items: center;
   padding-bottom: 2em;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .banner .container > div {
-  height: 10em;
-  margin-left: 2em;
+  padding: 1em 0em;
+  text-align: center;
 }
 
 .banner img {
@@ -98,11 +95,9 @@ body {
   color: #003c64;
   background-color: white;
   padding: 0.5em 1em;
-  margin-bottom: 2em;
 }
 .surveygrid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
   margin-top: 4em;
 }
 
@@ -130,7 +125,7 @@ body {
 .othersurveys {
   display: grid;
   text-align: center;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
   grid-gap: 2em;
 }
 .othersurveys > div {
@@ -173,7 +168,24 @@ footer ul > li {
 .surveyOverviewBox > .container + .container {
   margin-top: 2em;
 }
+.rightgrid {
+  margin-top: 4em;
+}
 @media (min-width: 768px) {
+  .banner .container {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+  .banner .container > div {
+    text-align: left;
+    padding: 0em 1em;
+  }
+  .rightgrid {
+    margin-top: 0;
+  }
+  .surveygrid {
+    grid-template-columns: 1fr 2fr;
+  }
   .navbar-collapse {
     display: flex;
     justify-content: space-between;
