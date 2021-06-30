@@ -6,7 +6,8 @@ RUN apt update && apt upgrade -y --no-install-recommends --fix-missing
 RUN apt install -y --no-install-recommends \
     vim \
     libpq-dev gcc \
-    python3 python3-pip python3-setuptools python3-wheel python3-venv python3-dev uwsgi-plugin-python3
+    python3 python3-pip python3-setuptools python3-wheel python3-venv python3-dev uwsgi-plugin-python3 \
+    wkhtmltopdf
 
 WORKDIR /srv
 
