@@ -12,7 +12,7 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
-    <title>Ask a user to rate a something</title>
+    <title>Ask a user to rate something</title>
 {% endblock head %} {% block content %}
     <div class="container">
         <div id="surveyElement" style="display: inline-block; width: 100%"></div>
@@ -43,7 +43,7 @@
 
                 survey.locale = "de";
                 survey.completedHtml =
-                    "<div><b>Vielen Dank für ihre Teilnahme</b><br/><a  href='{% url 'result_view' survey_id %}'>Wie sind die Ergebnisse bisher?</a></div>";
+                    "<div><b>Vielen Dank für Ihre Teilnahme</b><br/><a  href='{% url 'result_view' survey_id %}'>Wie sind die Ergebnisse bisher?</a></div>";
                 survey.render("surveyElement");
             });
         </script>
