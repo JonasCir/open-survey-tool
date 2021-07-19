@@ -564,7 +564,7 @@
                 "text": "stimme eher zu"
               },
               {
-                "value": "item4",
+                "value": "item5",
                 "text": "stimme voll und ganz zu"
               }
             ]
@@ -597,7 +597,7 @@
                 "text": "stimme eher zu"
               },
               {
-                "value": "item4",
+                "value": "item5",
                 "text": "stimme voll und ganz zu"
               }
             ]
@@ -625,7 +625,7 @@
                 "text": "stimme eher zu"
               },
               {
-                "value": "item4",
+                "value": "item5",
                 "text": "stimme voll und ganz zu"
               }
             ]
@@ -658,7 +658,7 @@
                 "text": "stimme eher zu"
               },
               {
-                "value": "item4",
+                "value": "item5",
                 "text": "stimme voll und ganz zu"
               }
             ]
@@ -691,7 +691,7 @@
                 "text": "stimme eher zu"
               },
               {
-                "value": "item4",
+                "value": "item5",
                 "text": "stimme voll und ganz zu"
               }
             ]
@@ -719,13 +719,13 @@
                 "text": "stimme eher zu"
               },
               {
-                "value": "item4",
+                "value": "item5",
                 "text": "stimme voll und ganz zu"
               }
             ]
           },
           {
-            "type": "radiogroup",
+            "type": "checkbox",
             "name": "question14",
             "title": "Die Informationsübermittlung zum „Strategie-Projekt 2025“ sollten zukünftig primär über folgenden Weg erfolgen (Mehrfachnennungen möglich): ",
             "hideNumber": true,
@@ -747,11 +747,11 @@
                 "text": "Informationsveranstaltungen"
               },
               {
-                "value": "item4",
+                "value": "item5",
                 "text": "Eigener Newsletter"
               },
               {
-                "value": "item4",
+                "value": "item6",
                 "text": "persönliche Gespräche "
               }
             ]
@@ -784,7 +784,7 @@
                 "text": "stimme eher zu"
               },
               {
-                "value": "item4",
+                "value": "item5",
                 "text": "stimme voll und ganz zu"
               }
             ]

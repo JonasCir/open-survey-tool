@@ -13,7 +13,11 @@ class RatingDistribution(Figure):
 
     @staticmethod
     def get_html(cfg, question=None):
-        res = RatingDistribution.compute(question)
+        try:
+            res = RatingDistribution.compute(question)
+        except Exception as e:
+            logger.error(e)
+            return ""
         fig = px.bar(res, labels={'value': 'Anzahl', 'variable': 'Variable'})
 
         fig.update_xaxes(type='category')

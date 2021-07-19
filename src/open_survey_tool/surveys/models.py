@@ -37,8 +37,9 @@ class Surveys(models.Model):
         """
         _type = Surveys.get_survey_type_of_question(question)
 
-        type_to_item_key = {'radiogroup': 'choices', 'rating': 'rateValues'}
+        type_to_item_key = {'radiogroup': 'choices', 'checkbox': 'choices', 'rating': 'rateValues'}
         item_key = type_to_item_key[_type]
+
         with connection.cursor() as cursor:
             cursor.execute(
                 """
