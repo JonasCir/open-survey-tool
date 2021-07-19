@@ -496,5 +496,301 @@
         ]
       }
     }
+  },
+  {
+    "model": "surveys.Surveys",
+    "pk": "123e4567-e89b-12d3-a456-426614174002",
+    "fields": {
+      "name": "FKT",
+      "definition_json": {
+        "overview": {
+          "title": "Strategie 2025",
+          "img": "feedback.jpg",
+          "time": "19.07.2021",
+          "contact": "Frau Maria Muster <br />Kriminalrätin <br /><br />Karlsstraße 108<br />74078 Heilbronn",
+          "description": "<p>Diese Umfrage ist Teil der Pilotphase von Sag’s der Polizei, einem Innovationsprojekt unserer “Strategie 2025”.</p>",
+          "duration": "3 Minuten"
+        },
+        "questions": [
+          {
+            "type": "radiogroup",
+            "name": "question1",
+            "title": "Bitte geben Sie Ihre Zugehörigkeit an",
+            "hideNumber": true,
+            "choices": [
+              {
+                "value": "item1",
+                "text": "SPDir"
+              },
+              {
+                "value": "item2",
+                "text": "KPDir"
+              },
+              {
+                "value": "item3",
+                "text": "VW / BfC / ÖPR / PSB / Umläufer"
+              },
+              {
+                "value": "item4",
+                "text": "FESt / StS / Prävention"
+              }
+            ]
+          },
+          {
+            "type": "html",
+            "name": "question4",
+            "html": "<h1>Allgemeine Zufriedenheit</h1>"
+          },
+          {
+            "type": "rating",
+            "name": "question2",
+            "title": "Ich bin generell mit den Inhalten und dem Verlauf des Strategie-Projekts des PP Heilbronn zufrieden",
+            "hideNumber": true,
+            "rateValues": [
+              {
+                "value": "item1",
+                "text": "Stimme gar nicht zu"
+              },
+              {
+                "value": "item2",
+                "text": "Stimme eher nicht zu"
+              },
+              {
+                "value": "item3",
+                "text": "neutral"
+              },
+              {
+                "value": "item4",
+                "text": "stimme eher zu"
+              },
+              {
+                "value": "item4",
+                "text": "stimme voll und ganz zu"
+              }
+            ]
+          },
+          {
+            "type": "html",
+            "name": "question3",
+            "html": "<h1>Einschätzung des eigenen Lernerfolgs </h1>"
+          },
+          {
+            "type": "rating",
+            "name": "question5",
+            "title": "Ich habe in den letzten zwei Jahren bei den Workshops und den Veranstaltungen im Rahmen des Strategie-Projekts mehr Verständnis für das Thema gewinnen können ",
+            "hideNumber": true,
+            "rateValues": [
+              {
+                "value": "item1",
+                "text": "Stimme gar nicht zu"
+              },
+              {
+                "value": "item2",
+                "text": "Stimme eher nicht zu"
+              },
+              {
+                "value": "item3",
+                "text": "neutral"
+              },
+              {
+                "value": "item4",
+                "text": "stimme eher zu"
+              },
+              {
+                "value": "item4",
+                "text": "stimme voll und ganz zu"
+              }
+            ]
+          },
+          {
+            "type": "rating",
+            "name": "question6",
+            "title": " Ich konnte das Vermittelte in meiner täglichen Arbeit umsetzten ",
+            "hideNumber": true,
+            "rateValues": [
+              {
+                "value": "item1",
+                "text": "Stimme gar nicht zu"
+              },
+              {
+                "value": "item2",
+                "text": "Stimme eher nicht zu"
+              },
+              {
+                "value": "item3",
+                "text": "neutral"
+              },
+              {
+                "value": "item4",
+                "text": "stimme eher zu"
+              },
+              {
+                "value": "item4",
+                "text": "stimme voll und ganz zu"
+              }
+            ]
+          },
+          {
+            "type": "html",
+            "name": "question7",
+            "html": "<h1>Zeitmanagement</h1>"
+          },
+          {
+            "type": "rating",
+            "name": "question10",
+            "title": "Ich konnte mir neben meiner täglichen Arbeit genug Zeit nehmen, um Veranstaltungen zu besuchen und die Themen zu verinnerlichen",
+            "hideNumber": true,
+            "rateValues": [
+              {
+                "value": "item1",
+                "text": "Stimme gar nicht zu"
+              },
+              {
+                "value": "item2",
+                "text": "Stimme eher nicht zu"
+              },
+              {
+                "value": "item3",
+                "text": "neutral"
+              },
+              {
+                "value": "item4",
+                "text": "stimme eher zu"
+              },
+              {
+                "value": "item4",
+                "text": "stimme voll und ganz zu"
+              }
+            ]
+          },
+          {
+            "type": "html",
+            "name": "question8",
+            "html": "<h1>Informationsfluss</h1>"
+          },
+          {
+            "type": "rating",
+            "name": "question12",
+            "title": " Ich war bis jetzt immer gut zu den Veranstaltungen, Themenschwerpunkten und Umsetzungsmaßnahmen informiert",
+            "hideNumber": true,
+            "rateValues": [
+              {
+                "value": "item1",
+                "text": "Stimme gar nicht zu"
+              },
+              {
+                "value": "item2",
+                "text": "Stimme eher nicht zu"
+              },
+              {
+                "value": "item3",
+                "text": "neutral"
+              },
+              {
+                "value": "item4",
+                "text": "stimme eher zu"
+              },
+              {
+                "value": "item4",
+                "text": "stimme voll und ganz zu"
+              }
+            ]
+          },
+          {
+            "type": "rating",
+            "name": "question13",
+            "title": "Die Menge und Häufigkeit von Informationen sind mir generell zu viel",
+            "hideNumber": true,
+            "rateValues": [
+              {
+                "value": "item1",
+                "text": "Stimme gar nicht zu"
+              },
+              {
+                "value": "item2",
+                "text": "Stimme eher nicht zu"
+              },
+              {
+                "value": "item3",
+                "text": "neutral"
+              },
+              {
+                "value": "item4",
+                "text": "stimme eher zu"
+              },
+              {
+                "value": "item4",
+                "text": "stimme voll und ganz zu"
+              }
+            ]
+          },
+          {
+            "type": "radiogroup",
+            "name": "question14",
+            "title": "Die Informationsübermittlung zum „Strategie-Projekt 2025“ sollten zukünftig primär über folgenden Weg erfolgen (Mehrfachnennungen möglich): ",
+            "hideNumber": true,
+            "choices": [
+              {
+                "value": "item1",
+                "text": "Intranet"
+              },
+              {
+                "value": "item2",
+                "text": "Persönliche Email"
+              },
+              {
+                "value": "item3",
+                "text": "Blitzlicht"
+              },
+              {
+                "value": "item4",
+                "text": "Informationsveranstaltungen"
+              },
+              {
+                "value": "item4",
+                "text": "Eigener Newsletter"
+              },
+              {
+                "value": "item4",
+                "text": "persönliche Gespräche "
+              }
+            ]
+          },
+          {
+            "type": "html",
+            "name": "question9",
+            "html": "<h1>Angebot</h1>"
+          },
+          {
+            "type": "rating",
+            "name": "question11",
+            "title": "Ich bin mit der Vielfältigkeit und Tiefe der Veranstaltungen generell zufrieden",
+            "hideNumber": true,
+            "rateValues": [
+              {
+                "value": "item1",
+                "text": "Stimme gar nicht zu"
+              },
+              {
+                "value": "item2",
+                "text": "Stimme eher nicht zu"
+              },
+              {
+                "value": "item3",
+                "text": "neutral"
+              },
+              {
+                "value": "item4",
+                "text": "stimme eher zu"
+              },
+              {
+                "value": "item4",
+                "text": "stimme voll und ganz zu"
+              }
+            ]
+          }
+        ]
+      }
+    }
   }
 ]
