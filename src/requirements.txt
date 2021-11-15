@@ -1,6 +1,6 @@
 Django==3.2.4
 djangorestframework==3.12.4
-psycopg2==2.8.6
+psycopg2==2.9.2
 plotly==4.14.3
 pdfkit==0.6.1
 pandas==1.2.4
