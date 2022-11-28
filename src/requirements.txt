@@ -3,6 +3,6 @@ djangorestframework==3.12.4
 psycopg2==2.8.6
 plotly==4.14.3
 pdfkit==0.6.1
-pandas==1.2.4
+pandas==1.5.2
 uuid==1.30
 uWSGI==2.0.19.1
